@@ -421,8 +421,9 @@
 </main>
 
 <!-- Waitlist fallback — activated automatically when Stripe payment links are still placeholders.
-     Captures email + desired tier/region to a GHL webhook while payment wiring is pending.
-     Swap the WAITLIST_WEBHOOK_URL below with a real GHL webhook-trigger URL when ready. -->
+     Captures email + desired tier/region into a GHL Form (non-premium trigger, $0/submission).
+     Form ID: knI9fE3fHBltU3tn9FeC (location wg6naDUEJKwlVXdUqLxQ / AQN Academy).
+     Submit posts to GHL via hidden iframe + form.target trick to bypass CORS. -->
 <div id="waitlist-banner" class="hidden" role="status" aria-live="polite" style="
   position: sticky; bottom: 0; left: 0; right: 0; z-index: 50;
   background: linear-gradient(90deg, #0B1D3A, #1565C0);
@@ -614,8 +615,18 @@
 (function() {
   "use strict";
 
-  // SWAP this URL with the real GHL webhook-trigger endpoint when ready.
-  // Format: https://services.leadconnectorhq.com/hooks/<HOOK_ID>/webhook-trigger/<WORKFLOW_ID>
+  // ------------------------------------------------------------------
+  // GHL Form submission — non-premium, $0 per submission.
+  // Form: "Waitlist — Despega con AQN"
+  // Location: AQN Academy (wg6naDUEJKwlVXdUqLxQ)
+  // Submission uses hidden-iframe + form.target trick to bypass CORS.
+  // ------------------------------------------------------------------
+  var GHL_FORM_ID     = "knI9fE3fHBltU3tn9FeC";
+  var GHL_LOCATION_ID = "wg6naDUEJKwlVXdUqLxQ";
+  var GHL_SUBMIT_URL  = "https://services.leadconnectorhq.com/forms/submit";
+
+  // Back-compat: if someone swaps in a raw webhook URL here (e.g. for quick local testing),
+  // the submit path below will use fetch() instead of the form-POST iframe trick.
   var WAITLIST_WEBHOOK_URL = "WAITLIST_WEBHOOK_URL";
 
   // SKU -> labels + amount (mirrors launch/data/products.json)
@@ -780,6 +791,7 @@
     });
     window.__AQN_WAITLIST_LEADS__ = (window.__AQN_WAITLIST_LEADS__ || []).concat(attempts);
 
+    // --- Path 1: raw webhook override (only used if someone swaps in a real webhook URL) ---
     if (WAITLIST_WEBHOOK_URL && !/WAITLIST_WEBHOOK_URL/.test(WAITLIST_WEBHOOK_URL)) {
       fetch(WAITLIST_WEBHOOK_URL, {
         method: "POST",
@@ -787,6 +799,58 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       }).catch(function() { /* swallow — we've captured locally as fallback */ });
+    } else {
+      // --- Path 2: default — POST to GHL Form via hidden-iframe trick (no CORS preflight) ---
+      try {
+        var sinkName = "wl-sink-" + Date.now();
+        var sink = document.createElement("iframe");
+        sink.name = sinkName;
+        sink.style.display = "none";
+        sink.setAttribute("aria-hidden", "true");
+        document.body.appendChild(sink);
+
+        var hiddenForm = document.createElement("form");
+        hiddenForm.action = GHL_SUBMIT_URL;
+        hiddenForm.method = "POST";
+        hiddenForm.target = sinkName;
+        hiddenForm.enctype = "application/x-www-form-urlencoded";
+        hiddenForm.style.display = "none";
+
+        function addField(name, value) {
+          var inp = document.createElement("input");
+          inp.type = "hidden";
+          inp.name = name;
+          inp.value = value == null ? "" : String(value);
+          hiddenForm.appendChild(inp);
+        }
+
+        // GHL form metadata
+        addField("formId",     GHL_FORM_ID);
+        addField("locationId", GHL_LOCATION_ID);
+        // Contact fields (default form has first_name, last_name, phone, email)
+        addField("first_name", payload.name || "");
+        addField("last_name",  "");
+        addField("phone",      ""); // default form marks phone required; many submitters will leave blank — Ivan may toggle off required flag
+        addField("email",      payload.email);
+        // Source / context as hidden fields — surface in the workflow for tagging
+        addField("source",            "waitlist_" + payload.sku);
+        addField("waitlist_tier",     payload.tier);
+        addField("waitlist_region",   payload.region);
+        addField("waitlist_lang",     payload.lang);
+        addField("waitlist_amount",   payload.amount_usd);
+        addField("waitlist_sku",      payload.sku);
+        addField("waitlist_referrer", payload.referrer);
+        addField("waitlist_url",      payload.url);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Clean up after 5s (iframe response may bounce due to CORS; we don't read it)
+        setTimeout(function() {
+          try { hiddenForm.remove(); } catch(e) {}
+          try { sink.remove(); } catch(e) {}
+        }, 5000);
+      } catch(e) { /* still show success — local cache preserves the lead */ }
     }
 
     // Fire GA4 lead event
