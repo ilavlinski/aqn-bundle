@@ -1,0 +1,221 @@
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","inLanguage":"es","name":"Lección 3.1: Por Qué Importa Codificar + Fundamentos de Python (Semanas 1-2)","educationalLevel":"University preparatory","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"Despega con AQN","provider":{"@type":"Organization","name":"Spacetech Inspira / AQN Academy"}},"author":{"@type":"Person","name":"Dr. Aracely Quispe Neira","jobTitle":"NASA JWST Lead Engineer"},"image":"https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l1.jpg","position":7}</script>
+<!-- open-graph-hint
+og:title       | Lección 3.1: Por Qué Importa Codificar + Fundamentos de Python (Semanas 1-2)
+og:image       | https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l1.jpg
+og:type        | article
+og:locale      | es_ES
+og:site_name   | Despega con AQN
+-->
+<div id="m3l1es" class="lesson-container" style="margin-top: 60px;">
+<div style="margin: 0 0 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+  <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l1.jpg"
+       alt="Modulo 3 hero" style="width: 100%; height: auto; display: block;">
+</div>
+
+    <span class="language-tag es-tag">SPANISH</span>
+<!-- lesson-nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px;"><span><a href="#m2l3es" style="text-decoration: none; color: #2563eb; font-weight: 600;">← Anterior: Lección 2.3</a></span><span><a href="/curso" style="text-decoration: none; color: #6b7280; font-weight: 500;">Índice del curso</a></span></div>
+
+    <h1>Lección 3.1: Por Qué Importa Codificar + Fundamentos de Python (Semanas 1-2)</h1>
+    <h2>Módulo 3: Codifica Tu Futuro</h2>
+
+    <div class="objectives-box">
+        <h3>Objetivos de la Lección</h3>
+        <ul>
+            <li>Entender por qué Python domina la ingeniería aeroespacial y los sistemas de control de misiones</li>
+            <li>Dominar los fundamentos de Python: variables, tipos de datos, flujo de control, funciones, colecciones</li>
+            <li>Construir ejercicios temáticos de la aeroespacial: calculadora de período orbital, solucionador de ecuación de cohete</li>
+            <li>Establecer bloques de estudio diarios de 90 minutos y hábitos de codificación</li>
+            <li>Crear tu primer repositorio en GitHub y documentar tu viaje de aprendizaje</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>Por Qué Python Impulsa la Aeroespacial: La Ventaja de NASA y SpaceX</h3>
+        <p>Cuando trabajaba en el equipo de operaciones de software del Telescopio Espacial James Webb, me di cuenta de algo fundamental: el telescopio no se mueve sin código. Cada corrección de alineación, cada lectura de sensor térmico, cada secuencia de comandos que viaja 1 millón de millas hasta JWST depende de herramientas de Python. En el Centro Goddard de la NASA, usamos Python para análisis de telemetría, automatización de control de misiones, y los canales de datos que procesan imágenes de los rincones más profundos del universo. SpaceX depende de Python para la administración de la red Starlink, la automatización de secuencias de lanzamiento, y la dinámica de vuelo. Blue Origin usa Python para sistemas autónomos y modelado de propulsión. AstroPy, la biblioteca de la comunidad de la NASA, procesa datos sin procesar de Hubble y JWST. Python no es popular en la aeroespacial solo porque está de moda. Es el estándar porque combina prototipado rápido, computación científica, y la capacidad humana de razonar sobre el código bajo presión.</p>
+        <table class="data-table">
+            <tr>
+                <th>Herramienta/Proyecto</th>
+                <th>Organización</th>
+                <th>Caso de Uso Principal</th>
+                <th>Por Qué Python</th>
+            </tr>
+            <tr>
+                <td><strong>AstroPy</strong></td>
+                <td>NASA / Comunidad Astronómica</td>
+                <td>Análisis de datos de telescopio espacial, calibración</td>
+                <td>Integración NumPy/SciPy, estándar de código abierto</td>
+            </tr>
+            <tr>
+                <td><strong>GMAT</strong></td>
+                <td>Centro Goddard, NASA</td>
+                <td>Diseño de trayectoria, planificación de misiones</td>
+                <td>Secuencias de Python para automatización y flujos de trabajo personalizados</td>
+            </tr>
+            <tr>
+                <td><strong>OrbitPy</strong></td>
+                <td>Comunidad aeroespacial de código abierto</td>
+                <td>Mecánica orbital, propagación de satélites</td>
+                <td>Python puro, ligero, educativo, mantenible</td>
+            </tr>
+            <tr>
+                <td><strong>Red Starlink</strong></td>
+                <td>SpaceX</td>
+                <td>Optimización de constelación de satélites, enrutamiento</td>
+                <td>Procesamiento rápido de datos, integración ML, iteración rápida</td>
+            </tr>
+            <tr>
+                <td><strong>Dinámica de Vuelo y Simulación</strong></td>
+                <td>Blue Origin</td>
+                <td>Simulación de trayectoria, control de vehículos autónomos</td>
+                <td>Ecosistema de computación científica, NumPy/SciPy, confiabilidad</td>
+            </tr>
+            <tr>
+                <td><strong>Análisis Propelente y Estructural</strong></td>
+                <td>Rocket Lab</td>
+                <td>Propiedades de materiales, análisis de estrés de tanques</td>
+                <td>Pandas para datos, Matplotlib para visualización, flujos de trabajo de ingeniería</td>
+            </tr>
+        </table>
+        <p><strong>Insight clave:</strong> Aprender Python no es una habilidad bonita de tener. Es el camino directo a las herramientas y flujos de trabajo que usarás en tu primer día en cualquier rol de ingeniería aeroespacial, ya sea en la NASA, un proveedor de lanzamiento comercial, o una startup de satélites.</p>
+    </div>
+
+    <div class="content-section gold-section">
+        <h3>Curriculum Semanas 1-2: De Cero a Programador Funcional</h3>
+        <table class="data-table">
+            <tr>
+                <th>Semana</th>
+                <th>Temas Centrales</th>
+                <th>Bloque de Estudio Diario de 90 Minutos</th>
+                <th>Proyecto Aeroespacial</th>
+            </tr>
+            <tr>
+                <td><strong>Semana 1</strong></td>
+                <td>Variables, tipos de datos, operadores, entrada/salida, condicionales (if/else), bucles (for/while)</td>
+                <td>30 min video + 45 min ejercicios de codificación + 15 min reflexión</td>
+                <td>Solucionador de Ecuación de Cohete. Ingresa empuje, masa, duración. Calcula aceleración usando F=ma.</td>
+            </tr>
+            <tr>
+                <td><strong>Semana 2</strong></td>
+                <td>Funciones, listas, diccionarios, entrada/salida de archivos, manejo de errores, módulos de biblioteca estándar</td>
+                <td>30 min video + 45 min ejercicios de codificación + 15 min reflexión</td>
+                <td>Calculadora de Período Orbital. Ingresa altitud orbital. Calcula período usando la tercera ley de Kepler.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h3>Semana 1 Profunda: Variables hasta Bucles</h3>
+        <p><strong>Día 1-2: Variables y Tipos de Datos</strong> Python trata todo como un objeto. Enteros (números enteros), flotantes (decimales), cadenas (texto), booleanos (Verdadero/Falso). Ejemplo:</p>
+        <pre style="background: #0B1D3A; color: #F9A825; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>empuje_newtons = 5_000_000  # Empuje del primer escaño de Falcon 9
+masa_kg = 549_000  # Masa del primer escaño + combustible
+tiempo_segundos = 10  # Duración de la quema en segundos
+
+# Calcula aceleración usando F=ma
+aceleracion = empuje_newtons / masa_kg
+distancia = 0.5 * aceleracion * (tiempo_segundos ** 2)
+
+print(f"Aceleración: {aceleracion:.2f} m/s²")
+print(f"Distancia recorrida: {distancia:.0f} metros")</code></pre>
+        <p><strong>Día 3-4: Flujo de Control</strong> Las declaraciones if ramifican la lógica. Los bucles for iteran sobre secuencias. Los bucles while se ejecutan hasta que una condición es falsa.</p>
+        <p><strong>Día 5-6: Estructuras de Datos</strong> Las listas almacenan colecciones ordenadas. Los diccionarios almacenan pares clave-valor. Ambos son esenciales para organizar la telemetría de misiones.</p>
+        <p><strong>Día 7-8: Funciones</strong> Las funciones son bloques de código reutilizables. Escribe una vez, úsala en todas partes. Cuando estaba construyendo dashboards de telemetría en Goddard, las funciones eran cómo evitábamos copiar código 50 veces.</p>
+        <p><strong>Día 9-10: Entrada/Salida de Archivos</strong> Los ingenieros aeroespaciales trabajan constantemente con archivos de datos. Registros CSV de pruebas de cohetes, archivos de configuración JSON, volcados de telemetría de texto. Aprende a leer, analizar, y escribir archivos limpiamente.</p>
+        <p><strong>Día 11-12: Manejo de Errores</strong> El código falla. Las redes se desconectan. Los sensores fallan. Los verdaderos ingenieros escriben código que atrapa errores de forma elegante en lugar de bloquearse.</p>
+        <p><strong>Día 13-14: Usando Bibliotecas</strong> La biblioteca estándar de Python (math, random, datetime) y los paquetes científicos (NumPy, Pandas, Matplotlib) resuelven el 80 por ciento de los problemas aeroespaciales. No necesitas reinventar algoritmos.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Recursos de Aprendizaje para Semanas 1-2</h3>
+        <table class="data-table">
+            <tr>
+                <th>Recurso</th>
+                <th>Formato</th>
+                <th>Costo</th>
+                <th>Por Qué Funciona</th>
+            </tr>
+            <tr>
+                <td><strong>Real Python</strong></td>
+                <td>Tutoriales interactivos, videos</td>
+                <td>Nivel gratuito disponible</td>
+                <td>Tutoriales estándar de la industria escritos por ingenieros. Ejemplos claros y prácticos.</td>
+            </tr>
+            <tr>
+                <td><strong>CS50P (Harvard)</strong></td>
+                <td>Videos de conferencias, conjuntos de problemas</td>
+                <td>Gratis (edX)</td>
+                <td>Fundamentos rigurosos de informática enseñados por David Malan. Los ingenieros aeroespaciales aprecian la profundidad.</td>
+            </tr>
+            <tr>
+                <td><strong>NASA Open MOOC</strong></td>
+                <td>Cursos en línea</td>
+                <td>Gratis</td>
+                <td>Instructores de la NASA. Python para operaciones de satélites, análisis de datos, automatización.</td>
+            </tr>
+            <tr>
+                <td><strong>Automate the Boring Stuff with Python</strong></td>
+                <td>Libro + en línea gratuito</td>
+                <td>En línea gratuito</td>
+                <td>Enseña automatización práctica. Cada ingeniero aeroespacial automatiza tareas repetitivas.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h3>Video Lección: Python en Control de Misiones Aeroespaciales</h3>
+        <p><strong>Script de video de Aracely, 900 palabras (10 minutos)</strong></p>
+        <p>Hola, soy Aracely. Trabajo en el Telescopio Espacial James Webb en el Centro Goddard de la NASA. Hoy quiero contarte por qué aprender Python cambió todo sobre cómo hago mi trabajo y por qué también cambiará el tuyo.</p>
+        <p>Crecí en un pueblo pequeño en el norte del Perú llamado Marripón. Mi abuela me crió para trabajar duro y hacer preguntas. Entrené en karate cuando era niña, y aprendí que la disciplina se compone. Cada día que me presentaba, me volvía un poco más fuerte. Cada técnica que practicaba, la entendía un poco más profundo. Así es como funciona la codificación. No necesitas ser brillante. Necesitas presentarte, escribir código todos los días, y confiar en el efecto compuesto.</p>
+        <p>Cuando llegué por primera vez a los Estados Unidos, me enseñé ingeniería a partir de libros de texto y cursos en línea. Pero Python fue diferente. Python me permitió automatizar las partes tediosas de mi trabajo. Podía escribir un script en 30 minutos que me habría llevado tres horas hacer a mano. A medida que avanzaba, comencé a escribir herramientas que otros ingenieros usaban. Ese es el poder. Ese es el apalancamiento. Por eso importa Python.</p>
+        <p>Déjame darte un ejemplo concreto. En Goddard, tenemos telemetría que llega de múltiples satélites cada segundo. Miles de lecturas de sensores. Necesitamos verificar esas lecturas en tiempo real: ¿Está la temperatura en rango normal? ¿Está la batería cargando? ¿Estamos viendo anomalías? Un humano no puede hacer esto a velocidad. Una hoja de cálculo falla. Pero un script de Python. Un script de Python puede monitorear 10,000 puntos de datos por segundo y alertarte el instante en que algo sale mal. Ese script mantiene satélites de millones de dólares saludables.</p>
+        <p>Aquí está la cosa que me inspira sobre tu generación: Tienes acceso a herramientas que tuve que buscar hace 15 años. Puedes aprender Python de forma gratuita. Puedes acceder a los propios datos de la NASA, a la API de SpaceX, a seguimiento de satélites en tiempo real. Puedes construir proyectos que importen mientras aún estás aprendiendo. Cuando tenía tu edad, solo podía leer sobre estas cosas. Tú puedes codificarlas.</p>
+        <p>Quiero que pienses en los ingenieros en Blue Origin trabajando en New Shepard. Los ingenieros en Rocket Lab lanzando diariamente. Los ingenieros en Satellogic en Argentina construyendo una constelación de nanosatélites. Cada uno de ellos escribe Python. No porque amen la programación en abstracto. Porque Python es el idioma que conecta la intención humana con la acción de la máquina. Es cómo le dices a un cohete qué hacer. Es cómo le dices a un satélite hacia dónde apuntar. Es cómo sabes si algo sale mal.</p>
+        <p>Katya Echazarreta, que nació en México y estudió ingeniería eléctrica en Cal State Long Beach, trabajó en el Laboratorio de Propulsión a Chorro de la NASA escribiendo software para los instrumentos Europa Clipper y Perseverance. Construyó código real que se ejecutará en misiones para encontrar vida más allá de la Tierra. Luego se convirtió en astronauta. Su camino comenzó con Python.</p>
+        <p>Los hermanos Tobacia de Colombia, ambos estudiaron ingeniería aeroespacial y se mudaron a los Estados Unidos. Son ingenieros en Blue Origin en este momento. Escribieron sus primeros scripts de Python como estudiantes, tal como estás a punto de hacer. Ahora están escribiendo código que impulsa cohetes.</p>
+        <p>Quiero que entiendas algo esencial: Este curso no se trata de convertirse en un programador profesional. Se trata de convertirse en un ingeniero que piensa computacionalmente. Se trata de ver un problema, escribir una herramienta, y probarla. Se trata de colaborar con otros ingenieros usando GitHub. Se trata de construir cosas que importen.</p>
+        <p>Durante las próximas dos semanas, escribirás un solucionador de ecuación de cohete. Escribirás una calculadora de período orbital usando la tercera ley de Kepler. Estos no son problemas de juguete. Estos son los cálculos reales que usan los planificadores de misiones. Cuando termines, tendrás código en tu GitHub que un reclutador en SpaceX o Blue Origin o una startup de satélites reconocerá inmediatamente: "Esta persona entiende los fundamentos. Esta persona puede pensar en código".</p>
+        <p>Mi abuela solía decir, "Nunca dejes que nadie te diga que no puedes". Eso se aplica a la codificación. No dejes que nadie te diga que no eres programador. Si puedes articular un problema, si puedes desglosarlo en pasos, si estás dispuesto a depurar e iterar, eres un programador. La única cosa entre tú y la industria aeroespacial son 100 horas de práctica dedicada.</p>
+        <p>Así que aquí está mi desafío para ti: Comprométete con estas dos semanas. Codifica todos los días durante 90 minutos. Haz los ejercicios. Lee los mensajes de error. Están tratando de ayudarte. Construye el solucionador de cohete. Construye la calculadora orbital. Luego empújalo a GitHub. Escribe un README que explique qué construiste y por qué. Ese es el comienzo de tu cartera.</p>
+        <p>Al final de este módulo, estarás listo para Python intermedio, APIs, análisis de datos. Estarás listo para trabajar con datos de misiones reales. Estarás listo para competir por roles en las organizaciones que están construyendo el futuro de la exploración espacial. Pero primero, tienes que presentarte todos los días y escribir código. Así es como comenzó cada ingeniero en la NASA, SpaceX, Blue Origin. Así es donde empiezas tú también.</p>
+        <p>Codifiquemos tu futuro juntos.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Descarga: Kit de Inicio Python y 30 Desafíos de Codificación</h3>
+        <p><a href="/downloads/aqn_python_fundamentals_checklist.pdf" download>aqn_python_fundamentals_checklist.pdf</a> (4 páginas)</p>
+        <p>Cubre: variables, tipos de datos, operadores, condicionales, bucles, funciones, listas, diccionarios, entrada/salida de archivos, manejo de errores. Marca cada concepto cuando lo domines. Registra tus bloques de estudio de 90 minutos diariamente.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Discusión Comunitaria</h3>
+        <p><strong>Prompt de Reflexión para Tu Grupo de Aprendizaje:</strong> Comparte tu primer script de Python con tu cohorte. ¿Qué problema resolviste? ¿Qué error encontraste primero y cómo lo depuraste? ¿Por qué importa ese mensaje de error?</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Quiz: Fundamentos Semanas 1-2</h3>
+        <p><strong>Responde las 6 preguntas. Puntuación 5 o superior para desbloquear la Lección 3.2.</strong></p>
+        <ol>
+            <li>Escribe una función de Python que calcule la aceleración de un cohete dado el empuje (Newtons), masa total (kg), y devuelva el resultado en m/s². Tu función debe incluir un docstring explicando la fórmula.</li>
+            <li>Crea una lista de cinco altitudes orbitales (en km). Escribe un bucle que convierte cada una a metros e imprime "Altitud X: Y metros" para cada una.</li>
+            <li>Escribe una declaración if/elif/else que toma un valor de velocidad e imprime: "Suborbit" si está bajo 7,000 m/s, "Órbita" si está 7,000-11,000 m/s, "Velocidad de escape" si 11,000+ m/s.</li>
+            <li>Crea un diccionario que represente una nave espacial con claves: nombre, altitud_km, combustible_pct. Escribe una función que toma este diccionario y devuelve una cadena de estado como "ISS a 408 km, combustible 87 por ciento".</li>
+            <li>Escribe un bloque try/except que lee un archivo CSV llamado "launch_data.csv" y maneja dos errores: FileNotFoundError y ValueError (si una fila no se puede analizar). Imprime mensajes de error apropiados.</li>
+            <li>Usando la biblioteca math, calcula la velocidad de escape de Marte (masa: 6.4171e23 kg, radio: 3.3895e6 m). Compáralo con la velocidad de escape de la Tierra. Imprime ambos valores.</li>
+        </ol>
+        <p><strong>Clave de Respuesta y Explicaciones</strong></p>
+        <p><strong>Pregunta 1:</strong> La respuesta correcta incluye un docstring, usa la fórmula F=ma correctamente, y devuelve un resultado numérico.</p>
+        <p><strong>Pregunta 2:</strong> Debe crear una lista, iterar con un bucle for, convertir km a m (multiplicar por 1000), y usar print con cadena formateada.</p>
+        <p><strong>Pregunta 3:</strong> Debe usar if/elif/else, no declaraciones if anidadas. Los valores de límite 7,000 y 11,000 deben probarse con precisión.</p>
+        <p><strong>Pregunta 4:</strong> La función debe aceptar un argumento de diccionario, acceder a las claves usando notación de corchetes, y devolver una cadena formateada.</p>
+        <p><strong>Pregunta 5:</strong> Debe incluir try/except, capturar FileNotFoundError (archivo faltante) y ValueError (error de análisis). Demuestra falla elegante.</p>
+        <p><strong>Pregunta 6:</strong> Usa math.sqrt(). La velocidad de escape de Marte es aproximadamente 5,027 m/s. La de Tierra aproximadamente 11,186 m/s. Fíjate bien: Marte tiene gravedad más baja a pesar de tener tamaño similar — esa es la intuición clave aquí.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Siguiente: Lección 3.2 (Python Intermedio + APIs)</h3>
+        <p>En la Lección 3.2, dominarás la Programación Orientada a Objetos (POO) construyendo una clase de Cohete de trabajo con cálculos de delta-v reales. Aprenderás NumPy y Pandas para analizar datos reales de telemetría de ISS. Te conectarás a APIs de la NASA en vivo y extraerás datos de seguimiento de satélites. Trazarás trayectorias orbitales usando Matplotlib. Al final de la Semana 6, habrás construido cinco mini-proyectos y estás listo para el capstone: Predictor de Pase de ISS.</p>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- LESSON 3.2 ENGLISH: Intermediate Python + APIs (Weeks 3-6) -->

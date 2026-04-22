@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios / Pricing — Despega con AQN</title>
+<meta name="description" content="Tres cohortes para estudiantes STEM latinoamericanos y globales. Mentoría en vivo con la Dra. Aracely Quispe Neira, ingeniera líder del JWST en NASA.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Despega con AQN — Precios">
+<meta property="og:description" content="Mentoría premium en vivo con la Dra. Aracely Quispe Neira (NASA JWST). 3 cohortes, para LatAm y globales.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://despegaconaqn.com/pricing">
+<meta property="og:image" content="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m1l1.jpg">
+<meta property="og:site_name" content="Despega con AQN">
+
+<!-- JSON-LD: Course + 6 Offers -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Despega con AQN / Launch with AQN",
+  "description": "Premium live group mentorship in STEM with Dr. Aracely Quispe Neira, NASA JWST Lead Engineer. Three tiers, two regions.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Spacetech Inspira / AQN Academy",
+    "sameAs": "https://despegaconaqn.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Dr. Aracely Quispe Neira",
+      "jobTitle": "NASA JWST Lead Engineer"
+    }
+  },
+  "offers": [
+    {"@type":"Offer","name":"Fundadores (LatAm)","price":"797","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://despegaconaqn.com/pricing"},
+    {"@type":"Offer","name":"Estandar (LatAm)","price":"997","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://despegaconaqn.com/pricing"},
+    {"@type":"Offer","name":"VIP (LatAm)","price":"2200","priceCurrency":"USD","availability":"https://schema.org/LimitedAvailability","url":"https://despegaconaqn.com/pricing"},
+    {"@type":"Offer","name":"Founding (US/Global)","price":"997","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://despegaconaqn.com/pricing"},
+    {"@type":"Offer","name":"Standard (US/Global)","price":"1497","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://despegaconaqn.com/pricing"},
+    {"@type":"Offer","name":"VIP (US/Global)","price":"2500","priceCurrency":"USD","availability":"https://schema.org/LimitedAvailability","url":"https://despegaconaqn.com/pricing"}
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0e27;
+    --bg-card: #121836;
+    --bg-card-featured: #17214d;
+    --brand: #2563eb;
+    --brand-hover: #1d4ed8;
+    --accent: #22d3ee;
+    --gold: #fbbf24;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --border: rgba(255,255,255,0.08);
+    --border-featured: #22d3ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(180deg, #050818 0%, #0a0e27 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 48px 0 24px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+  .region-toggle {
+    display: inline-flex;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    margin-bottom: 48px;
+  }
+  .region-toggle button {
+    padding: 10px 24px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.2s;
+  }
+  .region-toggle button.active {
+    background: var(--brand);
+    color: #fff;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+  .tier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .tier-card:hover { transform: translateY(-4px); }
+  .tier-card.featured {
+    background: var(--bg-card-featured);
+    border-color: var(--border-featured);
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.15);
+  }
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0a0e27;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .tier-name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .tier-tagline {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    min-height: 48px;
+  }
+  .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .price-amount { font-size: 48px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+  .price-currency { font-size: 20px; color: var(--text-dim); }
+  .price-note { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+  .price-strike { text-decoration: line-through; color: var(--text-dim); font-size: 16px; margin-right: 6px; }
+  .savings {
+    display: inline-block;
+    background: rgba(251, 191, 36, 0.15);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .features { list-style: none; flex-grow: 1; margin-bottom: 24px; }
+  .features li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='black' d='M7.629 14.566 3.434 10.37l1.414-1.414L7.63 11.738l7.293-7.293 1.414 1.414z'/></svg>") no-repeat center;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='black' d='M7.629 14.566 3.434 10.37l1.414-1.414L7.63 11.738l7.293-7.293 1.414 1.414z'/></svg>") no-repeat center;
+  }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: var(--brand);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .cta-btn:hover { background: var(--brand-hover); }
+  .tier-card.featured .cta-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--brand) 100%);
+  }
+  .guarantee {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 64px;
+  }
+  .guarantee h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: var(--gold);
+  }
+  .guarantee p { color: var(--text-dim); max-width: 560px; margin: 0 auto; }
+  .faq-link {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-dim);
+  }
+  .faq-link a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+  }
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  .hidden { display: none !important; }
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .tier-card.featured { order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow" id="eyebrow">Cohorte Primavera 2026</span>
+    <h1 id="headline">Elige tu cohorte</h1>
+    <p class="subtitle" id="subtitle">Mentoría en vivo con la Dra. Aracely Quispe Neira. Tres cohortes, mismo contenido, diferente nivel de acceso.</p>
+    <div class="region-toggle" role="tablist" aria-label="Region selector">
+      <button id="btn-latam" class="active" role="tab" aria-selected="true">LatAm (USD)</button>
+      <button id="btn-us" role="tab" aria-selected="false">US / Global (USD)</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- LATAM TIER GRID -->
+  <div class="pricing-grid" id="grid-latam">
+
+    <div class="tier-card">
+      <div class="tier-name">Fundadores</div>
+      <div class="tier-tagline">Precio de cohorte fundadora — cupos limitados.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">797</span>
+      </div>
+      <div class="price-note">USD, pago único</div>
+      <ul class="features">
+        <li>Acceso completo al curso (8 módulos, 24 lecciones ES)</li>
+        <li>Sesiones en vivo quincenales con Dra. Quispe</li>
+        <li>Q&A grupal directo</li>
+        <li>Hoja de ruta STEM personalizable</li>
+        <li>Comunidad privada Discord</li>
+        <li>Todos los downloadables y worksheets</li>
+        <li>Certificado de finalización</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_FOUNDING_LATAM" target="_blank" rel="noopener">Únete a Fundadores — $797</a>
+    </div>
+
+    <div class="tier-card featured">
+      <div class="featured-badge">Más popular</div>
+      <div class="tier-name">Estándar</div>
+      <div class="tier-tagline">El balance perfecto: contenido completo + apoyo constante.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">997</span>
+      </div>
+      <div class="price-note">USD, pago único</div>
+      <ul class="features">
+        <li>Todo lo de Fundadores</li>
+        <li>Sesiones en vivo <strong>semanales</strong></li>
+        <li>Hot seats: 10 minutos de revisión 1:1 cada 4 semanas</li>
+        <li>Revisión de portfolio/essay por parte del equipo</li>
+        <li>Acceso al portal alumni de por vida</li>
+        <li>Invitación a eventos presenciales cuando haya</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_STANDARD_LATAM" target="_blank" rel="noopener">Tarifa Estándar — $997</a>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">VIP</div>
+      <div class="tier-tagline">Grupo pequeño. Acceso directo. Máxima aceleración.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">2,200</span>
+      </div>
+      <div class="price-note">USD, pago único · 10 cupos por cohorte</div>
+      <ul class="features">
+        <li>Todo lo de Estándar</li>
+        <li><strong>3 sesiones 1:1 de 45 min</strong> con Dra. Quispe</li>
+        <li>Prioridad en Q&A de todas las sesiones grupales</li>
+        <li>Revisión detallada de aplicaciones universitarias</li>
+        <li>WhatsApp directo con el equipo</li>
+        <li>Carta de recomendación elegible al completar</li>
+        <li>Acceso a la mesa redonda anual de Fundadores</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_VIP_LATAM" target="_blank" rel="noopener">Cohorte VIP — $2,200</a>
+    </div>
+
+  </div>
+
+  <!-- US TIER GRID -->
+  <div class="pricing-grid hidden" id="grid-us">
+
+    <div class="tier-card">
+      <div class="tier-name">Founding</div>
+      <div class="tier-tagline">Founding cohort rate — limited seats.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">997</span>
+      </div>
+      <div class="price-note">USD, one-time</div>
+      <ul class="features">
+        <li>Full course access (8 modules, 24 lessons EN)</li>
+        <li>Biweekly live sessions with Dr. Quispe</li>
+        <li>Group Q&A</li>
+        <li>Personalizable STEM roadmap</li>
+        <li>Private Discord community</li>
+        <li>All downloadable worksheets and PDFs</li>
+        <li>Certificate of completion</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_FOUNDING_US" target="_blank" rel="noopener">Join Founding Cohort — $997</a>
+    </div>
+
+    <div class="tier-card featured">
+      <div class="featured-badge">Most popular</div>
+      <div class="tier-name">Standard</div>
+      <div class="tier-tagline">The sweet spot: full content + ongoing support.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">1,497</span>
+      </div>
+      <div class="price-note">USD, one-time</div>
+      <ul class="features">
+        <li>Everything in Founding</li>
+        <li><strong>Weekly</strong> live sessions</li>
+        <li>Hot seats: 10-min 1:1 review every 4 weeks</li>
+        <li>Portfolio/essay review by the team</li>
+        <li>Lifetime alumni portal access</li>
+        <li>Invites to in-person events when scheduled</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_STANDARD_US" target="_blank" rel="noopener">Standard Rate — $1,497</a>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-name">VIP</div>
+      <div class="tier-tagline">Small group. Direct access. Maximum acceleration.</div>
+      <div class="price-row">
+        <span class="price-currency">$</span>
+        <span class="price-amount">2,500</span>
+      </div>
+      <div class="price-note">USD, one-time · 10 seats per cohort</div>
+      <ul class="features">
+        <li>Everything in Standard</li>
+        <li><strong>3 × 45-min 1:1 sessions</strong> with Dr. Quispe</li>
+        <li>Priority Q&A in all group sessions</li>
+        <li>Detailed university application review</li>
+        <li>Direct WhatsApp with the team</li>
+        <li>Eligible recommendation letter on completion</li>
+        <li>Invite to the annual Founders Roundtable</li>
+      </ul>
+      <a class="cta-btn" href="STRIPE_LINK_AQN_VIP_US" target="_blank" rel="noopener">VIP Cohort — $2,500</a>
+    </div>
+
+  </div>
+
+  <section class="guarantee">
+    <h2 id="guarantee-title">Garantía de 14 días</h2>
+    <p id="guarantee-body">Participa en el primer módulo completo. Si sientes que no es para ti, escríbenos dentro de 14 días y te devolvemos el 100%. Sin preguntas.</p>
+  </section>
+
+  <div class="faq-link">
+    <span id="faq-text">¿Tienes preguntas antes de decidir?</span>
+    <a href="/faq">Lee las preguntas frecuentes →</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Spacetech Inspira · <a href="/privacidad" style="color:var(--text-dim);">Privacidad</a> · <a href="/terminos" style="color:var(--text-dim);">Términos</a> · contacto@despegaconaqn.com</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+
+  // LatAm country list
+  var LATAM = ["PE","MX","CO","CL","AR","BO","EC","CR","GT","HN","NI","PA","SV","UY","VE","DO","PR","CU","PY"];
+
+  var btnLatam = document.getElementById("btn-latam");
+  var btnUs = document.getElementById("btn-us");
+  var gridLatam = document.getElementById("grid-latam");
+  var gridUs = document.getElementById("grid-us");
+
+  // Copy swaps for region toggle
+  var copy = {
+    latam: {
+      eyebrow: "Cohorte Primavera 2026",
+      headline: "Elige tu cohorte",
+      subtitle: "Mentoría en vivo con la Dra. Aracely Quispe Neira. Tres cohortes, mismo contenido, diferente nivel de acceso.",
+      guaranteeTitle: "Garantía de 14 días",
+      guaranteeBody: "Participa en el primer módulo completo. Si sientes que no es para ti, escríbenos dentro de 14 días y te devolvemos el 100%. Sin preguntas.",
+      faqText: "¿Tienes preguntas antes de decidir? "
+    },
+    us: {
+      eyebrow: "Spring 2026 Cohort",
+      headline: "Choose your cohort",
+      subtitle: "Live mentorship with Dr. Aracely Quispe Neira. Three cohorts, same content, different levels of access.",
+      guaranteeTitle: "14-day guarantee",
+      guaranteeBody: "Attend the full first module. If you feel it's not for you, email us within 14 days and we'll refund 100%. No questions.",
+      faqText: "Have questions before deciding? "
+    }
+  };
+
+  function applyCopy(region) {
+    var c = copy[region];
+    document.getElementById("eyebrow").textContent = c.eyebrow;
+    document.getElementById("headline").textContent = c.headline;
+    document.getElementById("subtitle").textContent = c.subtitle;
+    document.getElementById("guarantee-title").textContent = c.guaranteeTitle;
+    document.getElementById("guarantee-body").textContent = c.guaranteeBody;
+    document.getElementById("faq-text").textContent = c.faqText;
+    document.documentElement.lang = region === "latam" ? "es" : "en";
+  }
+
+  function showLatam() {
+    gridLatam.classList.remove("hidden");
+    gridUs.classList.add("hidden");
+    btnLatam.classList.add("active");
+    btnUs.classList.remove("active");
+    btnLatam.setAttribute("aria-selected", "true");
+    btnUs.setAttribute("aria-selected", "false");
+    applyCopy("latam");
+    try { history.replaceState(null, "", "?region=latam"); } catch(e) {}
+  }
+  function showUs() {
+    gridUs.classList.remove("hidden");
+    gridLatam.classList.add("hidden");
+    btnUs.classList.add("active");
+    btnLatam.classList.remove("active");
+    btnUs.setAttribute("aria-selected", "true");
+    btnLatam.setAttribute("aria-selected", "false");
+    applyCopy("us");
+    try { history.replaceState(null, "", "?region=us"); } catch(e) {}
+  }
+
+  btnLatam.addEventListener("click", showLatam);
+  btnUs.addEventListener("click", showUs);
+
+  // Initial region detection: URL param > navigator.language > default LatAm
+  var urlParams = new URLSearchParams(window.location.search);
+  var regionParam = urlParams.get("region");
+  if (regionParam === "us") {
+    showUs();
+  } else if (regionParam === "latam") {
+    showLatam();
+  } else {
+    // Fallback: use browser language
+    var lang = (navigator.language || "es").toLowerCase();
+    if (lang.indexOf("es") === 0 || lang.indexOf("pt") === 0) {
+      showLatam();
+    } else {
+      showUs();
+    }
+    // Best-effort: try to upgrade using a free geo-ip endpoint (silently ignore failures)
+    try {
+      fetch("https://ipapi.co/country/", { cache: "default" })
+        .then(function(r) { return r.text(); })
+        .then(function(country) {
+          country = (country || "").trim().toUpperCase();
+          if (LATAM.indexOf(country) >= 0) showLatam(); else showUs();
+        })
+        .catch(function() { /* ignore */ });
+    } catch(e) { /* ignore */ }
+  }
+})();
+</script>
+
+</body>
+</html>

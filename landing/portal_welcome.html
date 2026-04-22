@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenido al portal — Despega con AQN</title>
+<meta name="description" content="Tu primera misión en el portal Despega con AQN. Guía rápida de 5 pasos para empezar.">
+
+<meta property="og:title" content="Bienvenido al portal Despega con AQN">
+<meta property="og:description" content="Tu primera misión empieza aquí.">
+<meta property="og:image" content="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/level_1_polizon.jpg">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --bg: #0a0e27;
+    --bg-soft: #121836;
+    --bg-card: #17214d;
+    --brand: #2563eb;
+    --brand-hover: #1d4ed8;
+    --accent: #22d3ee;
+    --gold: #fbbf24;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --success: #10b981;
+    --border: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(180deg, #050818 0%, #0a0e27 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 32px;
+    text-align: center;
+  }
+  .greeting {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Level + XP strip */
+  .level-strip {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 32px 0;
+  }
+  .level-strip img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+  }
+  .level-meta { flex-grow: 1; }
+  .level-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .level-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin: 2px 0 6px;
+  }
+  .xp-bar {
+    height: 8px;
+    background: var(--bg);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand), var(--accent));
+    width: 8%;
+    transition: width 0.4s;
+  }
+  .xp-caption {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  /* Mission checklist */
+  h2 {
+    font-size: 24px;
+    margin: 48px 0 20px;
+    color: #fff;
+  }
+  .mission-list { display: grid; gap: 16px; }
+  .mission {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .mission:hover { border-color: var(--accent); transform: translateX(4px); }
+  .mission-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .mission.done .mission-num {
+    background: var(--success);
+  }
+  .mission.done .mission-num::before {
+    content: "✓";
+  }
+  .mission.done .mission-num span { display: none; }
+  .mission-body { flex-grow: 1; }
+  .mission-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .mission-body p {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .mission-cta {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .mission-cta:hover { background: var(--brand-hover); }
+  .mission.done .mission-cta {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .xp-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: rgba(251, 191, 36, 0.12);
+    color: var(--gold);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+
+  /* Next live session card */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .info-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .info-card .primary-text {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .info-card .secondary-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .info-card a.link-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .info-card a.link-btn:hover { background: var(--brand-hover); }
+
+  /* Badge rail */
+  .badge-rail {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 8px 0 24px;
+    scroll-snap-type: x mandatory;
+  }
+  .badge {
+    flex: 0 0 120px;
+    text-align: center;
+    scroll-snap-align: start;
+    opacity: 0.35;
+    filter: grayscale(0.6);
+    transition: opacity 0.2s, filter 0.2s, transform 0.2s;
+  }
+  .badge:hover { transform: translateY(-4px); }
+  .badge.earned {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+  .badge img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    object-fit: cover;
+  }
+  .badge.earned img { border-color: var(--gold); }
+  .badge p {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  footer {
+    padding: 48px 0 32px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; border-bottom: 1px dashed var(--border); }
+
+  @media (max-width: 640px) {
+    .level-strip { flex-direction: column; align-items: flex-start; }
+    .mission { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="greeting" id="greeting">Cohorte Primavera 2026</div>
+    <h1 id="hero-title">¡Bienvenido a Despega con AQN!</h1>
+    <p class="hero-sub" id="hero-sub">Estás a bordo. Esta es tu primera misión: activa tu cuenta y completa las 5 tareas de abajo para desbloquear el siguiente nivel.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Current level + XP -->
+  <section class="level-strip">
+    <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/level_1_polizon.jpg" alt="Nivel 1: Polizón" id="level-img">
+    <div class="level-meta">
+      <div class="level-label" id="level-label">Nivel actual</div>
+      <div class="level-name" id="level-name">Polizón</div>
+      <div class="xp-bar"><div class="xp-bar-fill" id="xp-fill"></div></div>
+      <div class="xp-caption" id="xp-caption">0 / 100 XP para Cadete</div>
+    </div>
+  </section>
+
+  <!-- Onboarding mission -->
+  <h2 id="h2-mission">Tu misión de lanzamiento</h2>
+  <div class="mission-list" id="mission-list">
+    <div class="mission" data-id="m1">
+      <div class="mission-num"><span>1</span></div>
+      <div class="mission-body">
+        <h3>Preséntate en la comunidad <span class="xp-tag">+10 XP</span></h3>
+        <p>Entra a Discord, salúdanos, y cuéntanos de dónde vienes y qué sueño tienes. Aracely los lee todos.</p>
+        <a class="mission-cta" href="https://discord.gg/despegaconaqn" target="_blank" rel="noopener">Abrir Discord</a>
+      </div>
+    </div>
+
+    <div class="mission" data-id="m2">
+      <div class="mission-num"><span>2</span></div>
+      <div class="mission-body">
+        <h3>Completa tu perfil <span class="xp-tag">+10 XP</span></h3>
+        <p>Foto, país, tu nivel de inglés y tu objetivo STEM principal. Esto personaliza tu hoja de ruta.</p>
+        <a class="mission-cta" href="/perfil">Editar perfil</a>
+      </div>
+    </div>
+
+    <div class="mission" data-id="m3">
+      <div class="mission-num"><span>3</span></div>
+      <div class="mission-body">
+        <h3>Mira la Lección 1.1 completa <span class="xp-tag">+20 XP</span></h3>
+        <p>El Efecto Aracely: por qué estás posicionado para ganar. Empieza aquí, no te saltes ninguna parte.</p>
+        <a class="mission-cta" href="/curso#m1l1es">Empezar lección</a>
+      </div>
+    </div>
+
+    <div class="mission" data-id="m4">
+      <div class="mission-num"><span>4</span></div>
+      <div class="mission-body">
+        <h3>Pasa el quiz 1.1 con 10/10 <span class="xp-tag">+30 XP</span></h3>
+        <p>Diez preguntas, sin trampa. Si fallas, puedes repetirlo — queremos que domines el contenido.</p>
+        <a class="mission-cta" href="/curso#m1l1es-quiz">Hacer quiz</a>
+      </div>
+    </div>
+
+    <div class="mission" data-id="m5">
+      <div class="mission-num"><span>5</span></div>
+      <div class="mission-body">
+        <h3>Agenda la siguiente sesión en vivo <span class="xp-tag">+10 XP</span></h3>
+        <p>Aracely hace Q&A en vivo semanal. Apartar el calendario te da el badge Racha 7 cuando asistes tres veces seguidas.</p>
+        <a class="mission-cta" href="/calendario">Ver calendario</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info cards -->
+  <h2 id="h2-next">Lo que viene</h2>
+  <div class="card-grid">
+    <div class="info-card">
+      <h3 id="card-live-title">Próxima sesión en vivo</h3>
+      <div class="primary-text" id="live-date">Jueves 30 de abril · 7:00pm PE / 8:00pm CO / 5:00pm MX</div>
+      <p class="secondary-text" id="live-topic">Tema: Kick-off de la cohorte y diagnóstico individual</p>
+      <a class="link-btn" href="/calendario">Añadir a mi calendario</a>
+    </div>
+    <div class="info-card">
+      <h3 id="card-mentor-title">Mensaje de Aracely</h3>
+      <div class="primary-text" id="card-mentor-primary">"Bienvenido. Lo que hace diferente a este programa no es la información — es la honestidad. Pregunta todo. No te escondas."</div>
+      <p class="secondary-text" id="card-mentor-secondary">— Dra. Aracely Quispe Neira, NASA JWST</p>
+    </div>
+    <div class="info-card">
+      <h3 id="card-resources-title">Recursos inmediatos</h3>
+      <ul style="list-style:none; margin:0;">
+        <li style="margin-bottom:8px;"><a href="/downloads/welcome-kit.pdf" style="color:var(--accent); text-decoration:none;">→ Kit de bienvenida (PDF)</a></li>
+        <li style="margin-bottom:8px;"><a href="/curso" style="color:var(--accent); text-decoration:none;">→ Todos los módulos</a></li>
+        <li style="margin-bottom:8px;"><a href="/faq" style="color:var(--accent); text-decoration:none;">→ Preguntas frecuentes</a></li>
+        <li><a href="mailto:soporte@despegaconaqn.com" style="color:var(--accent); text-decoration:none;">→ Contactar soporte</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Badge rail -->
+  <h2 id="h2-badges">Tus insignias</h2>
+  <div class="badge-rail" id="badge-rail">
+    <div class="badge" data-id="badge_first_lesson">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_first_lesson.jpg" alt="Primer Despegue">
+      <p>Primer Despegue</p>
+    </div>
+    <div class="badge" data-id="badge_module_1">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_module_1.jpg" alt="Efecto Aracely">
+      <p>Efecto Aracely</p>
+    </div>
+    <div class="badge" data-id="badge_quiz_perfect_10">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_quiz_perfect_10.jpg" alt="Perfección Quiz x10">
+      <p>Quiz x10</p>
+    </div>
+    <div class="badge" data-id="badge_streak_7">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_streak_7.jpg" alt="Semana Estelar">
+      <p>Semana Estelar</p>
+    </div>
+    <div class="badge" data-id="badge_streak_30">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_streak_30.jpg" alt="Mes Orbital">
+      <p>Mes Orbital</p>
+    </div>
+    <div class="badge" data-id="badge_referral_1">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_referral_1.jpg" alt="Reclutador de Cadetes">
+      <p>Reclutador</p>
+    </div>
+    <div class="badge" data-id="badge_referral_5">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_referral_5.jpg" alt="Comandante de Escuadrón">
+      <p>Escuadrón</p>
+    </div>
+    <div class="badge" data-id="badge_testimonial">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_testimonial.jpg" alt="Voz del Cohete">
+      <p>Voz del Cohete</p>
+    </div>
+    <div class="badge" data-id="badge_community_100">
+      <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/badge_community_100.jpg" alt="Mentor Natural">
+      <p>Mentor Natural</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Spacetech Inspira · <a href="mailto:soporte@despegaconaqn.com">soporte@despegaconaqn.com</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+  /* Demonstration hook: in production GHL posts student state into
+     window.__AQN_STATE__ via custom JS on the portal page. This script
+     reads it if present, otherwise renders the default zero-state. */
+  var state = window.__AQN_STATE__ || {
+    firstName: "",
+    xp: 0,
+    levelRank: 1,
+    levelName: "Polizón",
+    levelImg: "https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/level_1_polizon.jpg",
+    nextLevelName: "Cadete",
+    nextLevelXp: 100,
+    earnedBadges: [],
+    doneMissions: [],
+    lang: "es"
+  };
+
+  // Greet by name if we have one
+  var heroTitle = document.getElementById("hero-title");
+  if (state.firstName && state.lang === "es") {
+    heroTitle.textContent = "¡Bienvenido, " + state.firstName + "!";
+  } else if (state.firstName && state.lang === "en") {
+    heroTitle.textContent = "Welcome, " + state.firstName + "!";
+  }
+
+  // XP bar
+  var xpPct = Math.min(100, Math.round((state.xp / state.nextLevelXp) * 100));
+  document.getElementById("xp-fill").style.width = xpPct + "%";
+  document.getElementById("xp-caption").textContent =
+    state.xp + " / " + state.nextLevelXp + " XP para " + state.nextLevelName;
+
+  // Level image + name
+  document.getElementById("level-img").src = state.levelImg;
+  document.getElementById("level-img").alt = "Nivel " + state.levelRank + ": " + state.levelName;
+  document.getElementById("level-name").textContent = state.levelName;
+
+  // Mark missions done
+  if (Array.isArray(state.doneMissions)) {
+    state.doneMissions.forEach(function(id) {
+      var el = document.querySelector('.mission[data-id="' + id + '"]');
+      if (el) el.classList.add("done");
+    });
+  }
+
+  // Mark badges earned
+  if (Array.isArray(state.earnedBadges)) {
+    state.earnedBadges.forEach(function(id) {
+      var el = document.querySelector('.badge[data-id="' + id + '"]');
+      if (el) el.classList.add("earned");
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

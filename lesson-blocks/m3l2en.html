@@ -1,0 +1,297 @@
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","inLanguage":"en","name":"Lesson 3.2: Intermediate Python + APIs (Weeks 3-6)","educationalLevel":"University preparatory","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"Launch with AQN","provider":{"@type":"Organization","name":"Spacetech Inspira / AQN Academy"}},"author":{"@type":"Person","name":"Dr. Aracely Quispe Neira","jobTitle":"NASA JWST Lead Engineer"},"image":"https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg","position":8}</script>
+<!-- open-graph-hint
+og:title       | Lesson 3.2: Intermediate Python + APIs (Weeks 3-6)
+og:image       | https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg
+og:type        | article
+og:locale      | en_US
+og:site_name   | Launch with AQN
+-->
+<div id="m3l2en" class="lesson-container" style="margin-top: 60px;">
+<div style="margin: 0 0 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+  <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg"
+       alt="Python code calling NASA APOD API — Lesson 3.2" style="width: 100%; height: auto; display: block;" loading="lazy">
+</div>
+    <span class="language-tag en-tag">ENGLISH</span>
+<!-- lesson-nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px;"><span><a href="#m3l1en" style="text-decoration: none; color: #2563eb; font-weight: 600;">← Previous: Lesson 3.1</a></span><span><a href="/course" style="text-decoration: none; color: #6b7280; font-weight: 500;">Course index</a></span></div>
+
+    <h1>Lesson 3.2: Intermediate Python + APIs (Weeks 3-6)</h1>
+    <h2>Module 3: Code Your Future</h2>
+
+    <div class="objectives-box">
+        <h3>Lesson Objectives</h3>
+        <ul>
+            <li>Master Object-Oriented Programming (OOP) with a working Rocket class and delta-v calculations</li>
+            <li>Learn NumPy for array operations and scientific computing</li>
+            <li>Master Pandas for tabular data, ISS telemetry analysis, satellite track data</li>
+            <li>Master Matplotlib for plotting orbital trajectories, satellite passes, launch windows</li>
+            <li>Connect to real NASA, SpaceX, and satellite APIs. Query live data</li>
+            <li>Build five mini-projects with real mission data and real APIs</li>
+            <li>Set up a Jupyter notebook workflow for reproducible aerospace data analysis</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>Week 3: Object-Oriented Programming for Aerospace</h3>
+        <p>OOP means organizing code into reusable objects. Instead of writing scattered functions, you define classes that bundle data and behavior together. In aerospace, this is how we think about systems: A spacecraft is an object with properties (mass, altitude, velocity, fuel) and behaviors (burn engines, communicate home, adjust attitude). A rocket is an object with thrust, mass, fuel, and the ability to calculate acceleration and delta-v.</p>
+        <p><strong>The Rocket Class: A Working Example</strong></p>
+        <pre style="background: #0B1D3A; color: #F9A825; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>class Rocket:
+    """Represents a launch vehicle with thrust, mass, fuel capacity, and delta-v calculations."""
+
+    def __init__(self, name, mass_kg, thrust_n, isp_seconds):
+        """Initialize a rocket.
+
+        Args:
+            name: Rocket designation (e.g., "Falcon 9", "New Shepard")
+            mass_kg: Dry mass (structure, engines, avionics) in kg
+            thrust_n: Sea-level thrust in Newtons
+            isp_seconds: Specific impulse in seconds (ISP is exhaust efficiency)
+        """
+        self.name = name
+        self.mass_kg = mass_kg
+        self.thrust_n = thrust_n
+        self.isp_seconds = isp_seconds
+        self.fuel_kg = 0
+        self.altitude_m = 0
+        self.velocity_mps = 0
+
+    def add_fuel(self, fuel_kg):
+        """Load fuel into the rocket."""
+        self.fuel_kg = fuel_kg
+        print(f"{self.name}: Loaded {fuel_kg} kg of propellant")
+
+    def total_mass(self):
+        """Total mass including fuel."""
+        return self.mass_kg + self.fuel_kg
+
+    def calculate_acceleration(self):
+        """Calculate current acceleration using F=ma."""
+        G = 9.81  # Earth surface gravity in m/s^2
+        thrust_eff = self.thrust_n - (self.total_mass() * G)  # Subtract weight
+        return thrust_eff / self.total_mass()
+
+    def calculate_delta_v(self):
+        """Calculate total delta-v available (exhaust velocity times ln(mass ratio)).
+
+        Delta-v is the total velocity change the rocket can achieve from all fuel burns.
+        Formula: dv = isp * g * ln(initial_mass / final_mass)
+        where g = 9.81 m/s^2 (standard gravity)
+        """
+        import math
+        G = 9.81
+        exhaust_velocity = self.isp_seconds * G
+        initial_mass = self.total_mass()
+        final_mass = self.mass_kg  # After all fuel is burned
+
+        if final_mass <= 0:
+            return 0
+
+        mass_ratio = initial_mass / final_mass
+        delta_v = exhaust_velocity * math.log(mass_ratio)
+        return delta_v
+
+    def status(self):
+        """Print rocket status."""
+        print(f"\n{self.name} Status:")
+        print(f"  Dry mass: {self.mass_kg} kg")
+        print(f"  Fuel: {self.fuel_kg} kg")
+        print(f"  Total mass: {self.total_mass()} kg")
+        print(f"  Thrust: {self.thrust_n:,} N")
+        print(f"  ISP: {self.isp_seconds} seconds")
+        print(f"  Delta-v available: {self.calculate_delta_v():.0f} m/s")
+        print(f"  Current acceleration: {self.calculate_acceleration():.2f} m/s²")
+
+# Create a Falcon 9 first stage
+falcon9 = Rocket("Falcon 9 F1", mass_kg=25_000, thrust_n=5_100_000, isp_seconds=282)
+falcon9.add_fuel(385_000)
+falcon9.status()
+
+# Create New Shepard (suborbital)
+shepard = Rocket("New Shepard", mass_kg=6_000, thrust_n=110_000, isp_seconds=210)
+shepard.add_fuel(24_000)
+shepard.status()</code></pre>
+    </div>
+
+    <div class="content-section">
+        <h3>Week 4: NumPy and Pandas for Aerospace Data</h3>
+        <p>NumPy provides fast arrays and mathematical operations. Pandas provides tabular data (DataFrames) which is how real telemetry is organized. Every aerospace engineer uses these libraries to crunch mission data.</p>
+        <p><strong>Example: ISS Altitude Data Analysis with Pandas</strong></p>
+        <pre style="background: #0B1D3A; color: #F9A825; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>import pandas as pd
+import numpy as np
+
+# Sample ISS altitude data over time (real format from space agencies)
+data = {
+    'timestamp': ['2026-04-22 08:00', '2026-04-22 08:05', '2026-04-22 08:10', '2026-04-22 08:15'],
+    'altitude_km': [408.2, 408.1, 407.9, 407.8],
+    'velocity_mps': [7659, 7658, 7660, 7659],
+    'temperature_c': [22.1, 22.0, 22.3, 22.1]
+}
+
+df = pd.DataFrame(data)
+print(df)
+print(f"\nAverage altitude: {df['altitude_km'].mean():.2f} km")
+print(f"Min altitude: {df['altitude_km'].min():.2f} km")
+print(f"Max velocity: {df['velocity_mps'].max()} m/s")
+
+# Detect anomalies (altitude drops more than 0.2 km)
+df['altitude_change'] = df['altitude_km'].diff()
+anomalies = df[df['altitude_change'] < -0.2]
+if len(anomalies) > 0:
+    print("\nAnomalies detected (rapid altitude loss):")
+    print(anomalies)</code></pre>
+    </div>
+
+    <div class="content-section">
+        <h3>Week 5: REST APIs and Live Data</h3>
+        <p>APIs (Application Programming Interfaces) let your code ask servers for data. NASA provides free APIs. SpaceX provides an API. N2YO provides real-time satellite tracking. Use the requests library to fetch data in JSON format, then parse it with Python.</p>
+        <table class="data-table">
+            <tr>
+                <th>API</th>
+                <th>Organization</th>
+                <th>Data Provided</th>
+                <th>Python Example</th>
+            </tr>
+            <tr>
+                <td><strong>NASA API</strong></td>
+                <td>NASA</td>
+                <td>APOD (Astronomy Photo of Day), Mars rovers, exoplanets</td>
+                <td>requests.get("api.nasa.gov/...?api_key=...")</td>
+            </tr>
+            <tr>
+                <td><strong>SpaceX API</strong></td>
+                <td>SpaceX (community maintained)</td>
+                <td>Launch history, rocket specs, missions</td>
+                <td>requests.get("api.spacexdata.com/v4/launches")</td>
+            </tr>
+            <tr>
+                <td><strong>N2YO Satellite Tracker</strong></td>
+                <td>N2YO</td>
+                <td>Real-time TLE, satellite passes, positions</td>
+                <td>requests.get("api.n2yo.com/rest/v1/satellite/...")</td>
+            </tr>
+            <tr>
+                <td><strong>Open-Meteo</strong></td>
+                <td>Open-Meteo (no key needed)</td>
+                <td>Weather, atmospheric data</td>
+                <td>requests.get("api.open-meteo.com/v1/forecast")</td>
+            </tr>
+            <tr>
+                <td><strong>USGS Earthquake</strong></td>
+                <td>USGS</td>
+                <td>Seismic activity (used to study Earth from orbit)</td>
+                <td>requests.get("earthquake.usgs.gov/earthquakes/feed/v1.0/...")</td>
+            </tr>
+        </table>
+        <p><strong>Example: Query SpaceX Launch History</strong></p>
+        <pre style="background: #0B1D3A; color: #F9A825; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>import requests
+import json
+
+# Query SpaceX API for recent launches (no auth required)
+url = "https://api.spacexdata.com/v4/launches?limit=5&sort=-date_unix"
+response = requests.get(url)
+launches = response.json()
+
+for launch in launches:
+    name = launch.get('name', 'Unknown')
+    date = launch.get('date_utc', 'Unknown')
+    success = launch.get('success', None)
+    status = "Success" if success else "Failure" if success is False else "Pending"
+    print(f"{name} - {date[:10]} - {status}")</code></pre>
+    </div>
+
+    <div class="content-section">
+        <h3>Week 6: Data Visualization with Matplotlib</h3>
+        <p>Raw data is hard to understand. Plots tell the story. Plot orbital trajectories, satellite passes, launch windows, telemetry trends.</p>
+        <pre style="background: #0B1D3A; color: #F9A825; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>import matplotlib.pyplot as plt
+import numpy as np
+
+# Plot an orbital trajectory
+time = np.linspace(0, 90, 360)  # 90 minutes, every 15 seconds
+altitude = 408 + 2 * np.sin(time / 90 * np.pi)  # Simulated altitude variation
+velocity = 7660 - 10 * np.cos(time / 90 * np.pi)  # Simulated velocity
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6))
+
+ax1.plot(time, altitude, 'b-', linewidth=2)
+ax1.set_ylabel('Altitude (km)', fontsize=11)
+ax1.set_title('ISS Orbital Profile (1 Orbit)', fontsize=13)
+ax1.grid(True, alpha=0.3)
+
+ax2.plot(time, velocity, 'r-', linewidth=2)
+ax2.set_xlabel('Time (minutes)', fontsize=11)
+ax2.set_ylabel('Velocity (m/s)', fontsize=11)
+ax2.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()</code></pre>
+    </div>
+
+    <div class="content-section">
+        <h3>Capstone Project: ISS Pass Predictor</h3>
+        <p><strong>Specification</strong></p>
+        <p>Build a command-line tool that takes your latitude/longitude and outputs when the ISS will pass overhead. Use N2YO API or NASA's Spot the Station API. Output: Rise time, max altitude, set time, brightness.</p>
+        <p><strong>Requirements</strong></p>
+        <ul>
+            <li>Accept user input: city name or lat/lon coordinates</li>
+            <li>Query ISS position from an API</li>
+            <li>Calculate pass times and max elevation angle</li>
+            <li>Output formatted predictions: "ISS visible from Lima, Peru on 2026-04-23 at 19:34 UTC, max elevation 72 degrees"</li>
+            <li>Store results in a CSV file for future reference</li>
+            <li>Use Matplotlib to plot the ISS orbit and your location</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>Video Lesson: OOP and APIs in Practice</h3>
+        <p><strong>Aracely's 950-word video script (12 minutes)</strong></p>
+        <p>Hi. This is Aracely. In these four weeks, you have moved from writing simple Python scripts to designing real aerospace software systems. That is the transition from student to engineer.</p>
+        <p>When I first started at NASA Goddard, I worked in telemetry. We were receiving thousands of data points per second from the James Webb Space Telescope. If you try to process that with lists and loops, your code is too slow. Your alert system lags. Your analysis takes hours. That is when I learned to use objects, NumPy, Pandas, and APIs. These tools are not optional in aerospace. They are survival.</p>
+        <p>Let me tell you about Emiliano Kargieman, who founded Satellogic in Argentina. Satellogic builds nanosatellites for Earth observation. They have launched over 50 satellites in a constellation. Every single one of those satellites generates gigabytes of imagery. Emiliano's engineers use Python with NumPy and Pandas every single day to process that data, detect changes on Earth, and deliver insights to customers. He started as an engineer. He taught himself Python through online courses and projects. He built a company.</p>
+        <p>Or consider the work being done at Blue Origin by engineers like the Tobacia brothers. They are writing code that controls autonomous rocket systems. They use OOP to model the rocket, the engines, the attitude control system, each as an object with properties and behaviors. Then they integrate those objects into a flight control software stack that runs in real time during launch. That software has to be correct, readable, and maintainable by a team. That is why they use Python classes and object-oriented design.</p>
+        <p>The ISS Pass Predictor you are building is not a toy. It is a real engineering problem. You are querying live satellite position data from an API. You are calculating geometry in three-dimensional space. You are outputting information that an actual astronomer or a satellite enthusiast would find useful. This is the kind of tool that space agencies, satellite operators, and commercial space companies build all the time.</p>
+        <p>When you finish this module, you will have written code that uses real data from real missions. You will have practiced OOP, NumPy, Pandas, Matplotlib, and APIs. You will have built tools that do actual work. That is what separates a person who knows how to write code from a person who understands how to think like a software engineer.</p>
+        <p>My challenge to you: Do not just complete the ISS Pass Predictor. Extend it. Add a feature to show the ISS orbit visually. Add a feature to predict multiple days ahead. Add a feature to estimate the ISS's position in real time using TLE data. Push it to GitHub with a clean README. That is how you build a portfolio that recruiters recognize.</p>
+        <p>The future of space exploration is being written by engineers who can code. You are becoming one of them.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Download: OOP Starter Code and API Documentation</h3>
+        <p><a href="/downloads/aqn_oop_rocket_class.pdf" download>aqn_oop_rocket_class.pdf</a> (3 pages, contains full Rocket class template with instructions)</p>
+        <p><a href="/downloads/aqn_iss_pass_predictor_spec.pdf" download>aqn_iss_pass_predictor_spec.pdf</a> (5 pages, ISS Pass Predictor full specification and starter code template)</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Community Discussion</h3>
+        <p><strong>Reflection Prompt:</strong> Share a screenshot of your ISS Pass Predictor output showing a pass for your city or a city you choose. What was the most challenging part of the project? What feature would you add next?</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Quiz: Weeks 3-6 Object-Oriented and API Programming</h3>
+        <p><strong>Answer all 7 questions. Score 6 or higher to open up Lesson 3.3.</strong></p>
+        <ol>
+            <li>Create a Satellite class with properties: name, altitude_km, inclination_degrees, orbital_period_minutes. Write a method that returns the satellite's mean motion (revolutions per day). Use the formula: mean_motion = 1440 / orbital_period_minutes.</li>
+            <li>Write a function that uses requests library to query the SpaceX API for the latest Falcon 9 launch. Parse the response JSON and print: launch name, launch date, success status.</li>
+            <li>Create a pandas DataFrame with three columns: mission_name (strings), launch_date (dates), success (boolean). Filter the DataFrame to show only successful missions. Calculate the success rate (percentage).</li>
+            <li>Write code using Matplotlib to plot two lines on the same graph: altitude (y-axis) vs time (x-axis) and velocity (y-axis, secondary) vs time (x-axis). Include legends and axis labels.</li>
+            <li>Write a function that accepts a satellite's altitude_km and orbital_period_minutes, then uses NumPy to calculate the satellite's orbital velocity using v = 2*pi*R / T, where R is orbital radius and T is period in seconds. Test with ISS data.</li>
+            <li>Explain in 3-4 sentences why we use classes in aerospace engineering software. How does a Rocket class help us model a real rocket?</li>
+            <li>Design a mini-project idea: What data would you query from an API, what would you analyze, and what visualization would you create? (Write 5-7 sentences.)</li>
+        </ol>
+        <p><strong>Answer Key and Explanations</strong></p>
+        <p><strong>Question 1 (Satellite class):</strong> Class must have __init__ with four properties. Method must calculate mean motion correctly. Test with realistic values (ISS: altitude 408 km, period 90 minutes, should yield ~16 revolutions/day).</p>
+        <p><strong>Question 2 (SpaceX API):</strong> Must use requests.get() with correct SpaceX API v4 endpoint. Parse JSON response correctly. Extract launch name, date_utc, success fields. Handle missing fields gracefully.</p>
+        <p><strong>Question 3 (Pandas filtering):</strong> DataFrame must have correct column types. Filter using df[df['success'] == True]. Success rate = (count of True) / (total rows) * 100.</p>
+        <p><strong>Question 4 (Matplotlib):</strong> Must create two y-axes using twinx(). Plot lines on each. Include legends, axis labels, title. Both lines visible without overlap.</p>
+        <p><strong>Question 5 (NumPy orbital velocity):</strong> Formula v = 2*pi*R / T. R = Earth radius + altitude. T = orbital_period_minutes * 60. ISS example: v ~ 7660 m/s.</p>
+        <p><strong>Question 6 (OOP explanation):</strong> Classes bundle data and behavior. Rocket class encapsulates mass, thrust, fuel, and behaviors like calculate_delta_v(). Makes code reusable and maintainable. Mirrors physical reality.</p>
+        <p><strong>Question 7 (Mini-project design):</strong> Must identify a specific data source (API), analysis question, and visualization type. Examples: "Query NASA APOD API, classify images by content using Python, create a gallery HTML page." or "Get earthquake data from USGS, analyze epicenter locations, plot on a map."</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Next: Lesson 3.3 (Portfolio Projects and GitHub Mastery)</h3>
+        <p>In Lesson 3.3, you will learn GitHub as a professional tool, not just a storage box. You will design and build five portfolio projects with full technical specifications. You will learn the README format that recruiters actually read. You will understand how GitHub profiles are screened by companies like SpaceX and Blue Origin. By the end, your GitHub will demonstrate mastery of Python, APIs, data analysis, and version control. You will be ready to apply for junior aerospace engineer and data engineer roles.</p>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- LESSON 3.2 SPANISH: Python Intermedio + APIs (Semanas 3-6) -->

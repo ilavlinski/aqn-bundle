@@ -1,0 +1,238 @@
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","inLanguage":"es","name":"Lección 3.2: Python Intermedio + APIs (Semanas 3-6)","educationalLevel":"University preparatory","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"Despega con AQN","provider":{"@type":"Organization","name":"Spacetech Inspira / AQN Academy"}},"author":{"@type":"Person","name":"Dr. Aracely Quispe Neira","jobTitle":"NASA JWST Lead Engineer"},"image":"https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg","position":8}</script>
+<!-- open-graph-hint
+og:title       | Lección 3.2: Python Intermedio + APIs (Semanas 3-6)
+og:image       | https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg
+og:type        | article
+og:locale      | es_ES
+og:site_name   | Despega con AQN
+-->
+<div id="m3l2es" class="lesson-container" style="margin-top: 60px;">
+<div style="margin: 0 0 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+  <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l2.jpg"
+       alt="Código Python llamando API APOD de NASA — Lección 3.2" style="width: 100%; height: auto; display: block;" loading="lazy">
+</div>
+    <span class="language-tag es-tag">SPANISH</span>
+<!-- lesson-nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px;"><span><a href="#m3l1es" style="text-decoration: none; color: #2563eb; font-weight: 600;">← Anterior: Lección 3.1</a></span><span><a href="/curso" style="text-decoration: none; color: #6b7280; font-weight: 500;">Índice del curso</a></span></div>
+
+    <h1>Lección 3.2: Python Intermedio + APIs (Semanas 3-6)</h1>
+    <h2>Módulo 3: Codifica Tu Futuro</h2>
+
+    <div class="objectives-box">
+        <h3>Objetivos de la Lección</h3>
+        <ul>
+            <li>Dominar la Programación Orientada a Objetos (POO) con una clase de Cohete de trabajo y cálculos de delta-v</li>
+            <li>Aprender NumPy para operaciones de matriz y computación científica</li>
+            <li>Dominar Pandas para datos tabulares, análisis de telemetría de ISS, datos de órbitas de satélites</li>
+            <li>Dominar Matplotlib para trazar trayectorias orbitales, pases de satélites, ventanas de lanzamiento</li>
+            <li>Conectarse a APIs reales de NASA, SpaceX y satélites. Consultar datos en vivo</li>
+            <li>Construir cinco mini-proyectos con datos de misiones reales y APIs reales</li>
+            <li>Configurar un flujo de trabajo de Jupyter Notebook para análisis aeroespacial reproducible</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>Semana 3: Programación Orientada a Objetos para Aeroespacial</h3>
+        <p>POO significa organizar el código en objetos reutilizables. En lugar de escribir funciones dispersas, defines clases que agrupan datos y comportamiento juntos. En la aeroespacial, así es como pensamos sobre los sistemas: una nave espacial es un objeto con propiedades (masa, altitud, velocidad, combustible) y comportamientos (quemar motores, comunicarse a casa, ajustar actitud). Un cohete es un objeto con empuje, masa, combustible, y la capacidad de calcular aceleración y delta-v.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Semana 4: NumPy y Pandas para Datos Aeroespaciales</h3>
+        <p>NumPy proporciona matrices rápidas y operaciones matemáticas. Pandas proporciona datos tabulares (DataFrames) que es cómo se organiza la telemetría real. Cada ingeniero aeroespacial usa estas bibliotecas para analizar datos de misiones.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Semana 5: APIs REST y Datos en Vivo</h3>
+        <p>Las APIs (Interfaces de Programación de Aplicaciones) permiten que tu código solicite datos a servidores. La NASA proporciona APIs gratuitas. SpaceX proporciona una API. N2YO proporciona seguimiento de satélites en tiempo real. Usa la biblioteca requests para obtener datos en formato JSON, luego analízalos con Python.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Semana 6: Visualización de Datos con Matplotlib</h3>
+        <p>Los datos sin procesar son difíciles de entender. Los gráficos cuentan la historia. Traza trayectorias orbitales, pases de satélites, ventanas de lanzamiento, tendencias de telemetría.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Video Lección: POO y APIs en Práctica</h3>
+        <p><strong>Script de video de Aracely, 950 palabras (12 minutos)</strong></p>
+        <p>Hola. Soy Aracely. En estas cuatro semanas, has pasado de escribir scripts simples de Python a diseñar sistemas de software aeroespaciales reales. Esa es la transición de estudiante a ingeniero.</p>
+        <p>Cuando comencé en el Centro Goddard de la NASA, trabajé en telemetría. Estábamos recibiendo miles de puntos de datos por segundo desde el Telescopio Espacial James Webb. Si intentas procesar eso con listas y bucles, tu código es demasiado lento. Tu sistema de alerta se queda atrás. Tu análisis toma horas. Fue entonces cuando aprendí a usar objetos, NumPy, Pandas, y APIs. Estas herramientas no son opcionales en la aeroespacial. Son supervivencia.</p>
+        <p>Déjame contarte sobre Emiliano Kargieman, quien fundó Satellogic en Argentina. Satellogic construye nanosatélites para observación terrestre. Han lanzado más de 50 satélites en una constelación. Cada uno de esos satélites genera gigabytes de imágenes. Los ingenieros de Emiliano usan Python con NumPy y Pandas todos los días para procesar esos datos, detectar cambios en la Tierra, y entregar perspectivas a los clientes. Comenzó como ingeniero. Se enseñó a sí mismo Python a través de cursos en línea y proyectos. Construyó una empresa.</p>
+        <p>O considera el trabajo realizado en Blue Origin por ingenieros como los hermanos Tobacia. Están escribiendo código que controla sistemas de cohetes autónomos. Usan POO para modelar el cohete, los motores, el sistema de control de actitud, cada uno como un objeto con propiedades y comportamientos. Luego integran esos objetos en una pila de software de control de vuelo que se ejecuta en tiempo real durante el lanzamiento. Ese software tiene que ser correcto, legible, y mantenible por un equipo. Por eso usan clases de Python y diseño orientado a objetos.</p>
+        <p>El Predictor de Pase de ISS que estás construyendo no es un juguete. Es un problema de ingeniería real. Estás consultando datos de posición de satélites en vivo desde una API. Estás calculando geometría en espacio tridimensional. Estás produciendo información que un astrónomo real o un entusiasta de satélites encontraría útil. Este es el tipo de herramienta que agencias espaciales, operadores de satélites, y empresas de espacio comercial construyen todo el tiempo.</p>
+        <p>Cuando termines este módulo, habrás escrito código que usa datos reales de misiones reales. Habrás practicado POO, NumPy, Pandas, Matplotlib, y APIs. Habrás construido herramientas que hacen trabajo real. Eso es lo que separa a una persona que sabe cómo escribir código de una persona que entiende cómo pensar como un ingeniero de software.</p>
+        <p>Mi desafío para ti: No solo completes el Predictor de Pase de ISS. Extiéndelo. Agrega una característica para mostrar la órbita de ISS visualmente. Agrega una característica para predecir múltiples días hacia adelante. Agrega una característica para estimar la posición de ISS en tiempo real usando datos TLE. Empújalo a GitHub con un README limpio. Eso es cómo construyes una cartera que los reclutadores reconocen.</p>
+        <p>El futuro de la exploración espacial está siendo escrito por ingenieros que pueden codificar. Te estás convirtiendo en uno de ellos.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Descarga: Código de Inicio OOP y Documentación de API</h3>
+        <p><a href="/downloads/aqn_oop_rocket_class.pdf" download>aqn_oop_rocket_class.pdf</a> (3 páginas, contiene plantilla completa de clase Cohete con instrucciones)</p>
+        <p><a href="/downloads/aqn_iss_pass_predictor_spec.pdf" download>aqn_iss_pass_predictor_spec.pdf</a> (5 páginas, especificación completa de Predictor de Pase de ISS y plantilla de código de inicio)</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Discusión Comunitaria</h3>
+        <p><strong>Prompt de Reflexión:</strong> Comparte una captura de pantalla de la salida de tu Predictor de Pase de ISS mostrando un pase para tu ciudad o una ciudad que elijas. ¿Cuál fue la parte más desafiante del proyecto? ¿Qué característica agregarías después?</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Quiz: Semanas 3-6 Programación Orientada a Objetos y API</h3>
+        <p><strong>Responde las 7 preguntas. Puntuación 6 o superior para desbloquear la Lección 3.3.</strong></p>
+        <ol>
+            <li>Crea una clase Satélite con propiedades: nombre, altitud_km, inclinación_grados, período_orbital_minutos. Escribe un método que devuelve el movimiento medio del satélite (revoluciones por día). Usa la fórmula: movimiento_medio = 1440 / período_orbital_minutos.</li>
+            <li>Escribe una función que usa la biblioteca requests para consultar la API de SpaceX para el lanzamiento de Falcon 9 más reciente. Analiza la respuesta JSON e imprime: nombre del lanzamiento, fecha de lanzamiento, estado de éxito.</li>
+            <li>Crea un DataFrame de Pandas con tres columnas: nombre_misión (cadenas), fecha_lanzamiento (fechas), éxito (booleano). Filtra el DataFrame para mostrar solo misiones exitosas. Calcula la tasa de éxito (porcentaje).</li>
+            <li>Escribe código usando Matplotlib para trazar dos líneas en el mismo gráfico: altitud (eje y) vs tiempo (eje x) y velocidad (eje y secundario) vs tiempo (eje x). Incluye leyendas y etiquetas de eje.</li>
+            <li>Escribe una función que acepte altitud_km de un satélite y período_orbital_minutos, luego usa NumPy para calcular la velocidad orbital del satélite usando v = 2*pi*R / T, donde R es el radio orbital y T es el período en segundos. Prueba con datos de ISS.</li>
+            <li>Explica en 3-4 oraciones por qué usamos clases en software de ingeniería aeroespacial. ¿Cómo ayuda una clase de Cohete a modelar un cohete real?</li>
+            <li>Diseña una idea de mini-proyecto: ¿Qué datos consultarías de una API, qué analizarías, y qué visualización crearías? (Escribe 5-7 oraciones).</li>
+        </ol>
+    </div>
+
+        <div class="content-section">
+        <h3>Programación Orientada a Objetos: Un Ejemplo Real</h3>
+        <p>Antes de que alguien te pida escribir POO en una entrevista técnica, practícalo en algo que te importe. Aquí está una clase <code>Rocket</code> simplificada. Llévala al notebook y ejecútala. La versión completa con múltiples etapas, arrastre y gravedad inversa-cuadrada vive en <code>aqn_oop_rocket_class.py</code> en los descargables del módulo — 150 líneas, cada una comentada.</p>
+        <pre style="background:#0a0a0a;color:#e5e5e5;padding:16px;border-radius:8px;overflow-x:auto;font-family:'Courier New',monospace;font-size:13px;line-height:1.5;"><code>class Cohete:
+    """Un cohete de una sola etapa con combustible y empuje constantes."""
+
+    G0 = 9.80665  # gravedad estándar, m/s^2
+
+    def __init__(self, masa_seca, masa_propelente, empuje, isp):
+        self.masa_seca = masa_seca
+        self.masa_propelente = masa_propelente
+        self.empuje = empuje
+        self.isp = isp
+        self.t = 0.0
+        self.v = 0.0
+        self.h = 0.0
+
+    @property
+    def flujo_masico(self):
+        return self.empuje / (self.isp * self.G0)
+
+    @property
+    def masa_actual(self):
+        quemado = self.flujo_masico * self.t
+        return self.masa_seca + max(0.0, self.masa_propelente - quemado)
+
+    def paso(self, dt):
+        t_efectivo = self.empuje if self.flujo_masico * self.t &lt; self.masa_propelente else 0.0
+        a = t_efectivo / self.masa_actual - self.G0
+        self.v += a * dt
+        self.h += self.v * dt
+        self.t += dt
+
+
+if __name__ == "__main__":
+    cohete = Cohete(masa_seca=500, masa_propelente=1500, empuje=40000, isp=260)
+    for _ in range(200):
+        cohete.paso(0.5)
+    print(f"t={cohete.t:.0f}s  altura={cohete.h/1000:.1f}km  v={cohete.v:.0f}m/s")
+</code></pre>
+        <p>Lo que enseña este ejemplo: las clases encapsulan estado (masa, velocidad, altura) y comportamiento (paso). Las propiedades (<code>@property</code>) calculan valores derivados bajo demanda. El método <code>paso</code> es un integrador Euler simple. Cuando lees código Python real en un trabajo, verás este patrón en todas partes.</p>
+    </div>
+
+    <div class="content-section gold-section">
+        <h3>Consumo de APIs REST: El Patrón que Necesitas Dominar</h3>
+        <p>En tu primer trabajo como ingeniero de datos o de software en aeroespacial, harás esto cientos de veces: llamar a un API, parsear JSON, manejar errores, respetar límites de tasa. Aquí está el patrón completo en ~40 líneas.</p>
+        <pre style="background:#0a0a0a;color:#e5e5e5;padding:16px;border-radius:8px;overflow-x:auto;font-family:'Courier New',monospace;font-size:13px;line-height:1.5;"><code>import time
+import requests
+from typing import Any
+
+class ApiCliente:
+    def __init__(self, base_url: str, api_key: str, max_reintentos: int = 3):
+        self.base_url = base_url.rstrip("/")
+        self.session = requests.Session()
+        self.session.headers.update({"Authorization": f"Bearer {api_key}"})
+        self.max_reintentos = max_reintentos
+
+    def obtener(self, ruta: str, params: dict = None) -> dict:
+        url = f"{self.base_url}/{ruta.lstrip('/')}"
+        for intento in range(self.max_reintentos):
+            r = self.session.get(url, params=params, timeout=30)
+            if r.status_code == 429:  # límite de tasa
+                espera = int(r.headers.get("Retry-After", 2 ** intento))
+                time.sleep(espera)
+                continue
+            if r.status_code &gt;= 500:
+                time.sleep(2 ** intento)  # backoff exponencial
+                continue
+            r.raise_for_status()
+            return r.json()
+        raise RuntimeError(f"Falló después de {self.max_reintentos} intentos: {url}")
+
+
+# Ejemplo: Celestrak API para TLEs de satélites
+cliente = ApiCliente("https://celestrak.org", api_key="")
+tle_iss = cliente.obtener("NORAD/elements/gp.php", {"CATNR": "25544", "FORMAT": "TLE"})
+</code></pre>
+        <p>Cinco detalles importantes aquí: sesión persistente (reusa conexiones TCP), autenticación en headers (nunca en URL), reintentos con backoff exponencial, manejo explícito de 429, y timeouts. Cuando un reclutador te pregunta "¿cómo consumes un API?", muestras este patrón y pasas la primera ronda técnica.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Git Workflow Profesional: La Secuencia de 7 Pasos</h3>
+        <p>En la universidad te enseñaron <code>git commit -am "arreglo"</code>. Ese no es el Git del trabajo. Aquí está el workflow que se espera en cualquier equipo senior de aeroespacial o NewSpace.</p>
+        <ol style="margin-left: 20px;">
+            <li><code>git checkout main &amp;&amp; git pull</code> — empieza limpio desde main actualizado</li>
+            <li><code>git checkout -b feature/AQN-142-satellite-parser</code> — rama con ID de ticket</li>
+            <li>Haz cambios pequeños y <em>atómicos</em>. Un commit, un concepto.</li>
+            <li><code>git add -p</code> — revisa cada cambio interactivamente antes de commit</li>
+            <li><code>git commit -m "Parse Celestrak TLE in streaming mode (AQN-142)"</code> — mensaje en imperativo, con ID</li>
+            <li><code>git push origin feature/AQN-142-satellite-parser</code> — empuja la rama</li>
+            <li>Abre un Pull Request con descripción, capturas, y checklist. Espera revisión de al menos un compañero antes de mergear.</li>
+        </ol>
+        <p>Este patrón resuelve el 90% de los problemas de colaboración: quién cambió qué, por qué, cuándo, y quién lo revisó. Los equipos que no hacen esto son los que a las 2 AM del jueves tienen un incidente en producción porque nadie sabe qué cambio lo causó.</p>
+    </div>
+
+    <div class="content-section gold-section">
+        <h3>Ejercicios Extendidos (Cuatro Semanas de Práctica)</h3>
+        <p>Haz uno por semana. Cada uno ocupa 6-10 horas. Al final de las cuatro semanas tendrás cuatro proyectos en GitHub que puedes poner en tu currículum.</p>
+        <p><strong>Semana 1 — Clase Satellite con SGP4.</strong> Escribe una clase <code>Satelite</code> que tome un TLE en el constructor y exponga los métodos <code>posicion_en(t)</code>, <code>velocidad_en(t)</code>, y <code>proxima_pasada_sobre(lat, lon, min_elev)</code>. Usa la librería <code>sgp4</code>. Cubre con pruebas unitarias <code>pytest</code>. Sube a GitHub.</p>
+        <p><strong>Semana 2 — CLI con argparse.</strong> Envuelve tu clase Satelite en un CLI. <code>python satcli.py next-pass --norad 25544 --lat -12.04 --lon -77.04</code> imprime las próximas 5 pasadas visibles. Añade soporte JSON output para usos automatizados.</p>
+        <p><strong>Semana 3 — Dashboard Web.</strong> Sirve los datos usando <code>fastapi</code>. Añade endpoints <code>GET /pass/{norad}?lat=&amp;lon=</code>. Un pequeño HTML con JavaScript que muestra un mapa del rastro de tierra y la próxima pasada para tu ubicación.</p>
+        <p><strong>Semana 4 — CI/CD.</strong> Añade GitHub Actions que corre los tests en cada push, genera un badge de cobertura, y construye un contenedor Docker. Al final, el proyecto debería ser "clonar y correr" sin instrucciones.</p>
+        <p>Cada uno de estos proyectos, solos, he visto ser mencionados en ofertas de trabajo de $120K+. Los cuatro juntos construyen un portafolio que abre puertas.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Patrones Avanzados: Context Managers y Decoradores</h3>
+        <p>Dos cosas que separan a los junior de los mid-level en Python. Aprenderlas toma una tarde. Se paga el resto de tu carrera.</p>
+        <p><strong>Context Manager para manejar recursos:</strong></p>
+        <pre style="background:#0a0a0a;color:#e5e5e5;padding:12px;border-radius:8px;overflow-x:auto;font-family:'Courier New',monospace;font-size:13px;"><code>class SesionGroundStation:
+    def __enter__(self):
+        self.conn = abrir_radio()
+        return self
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.conn.close()  # siempre se cierra, incluso si hay excepción
+
+with SesionGroundStation() as estacion:
+    estacion.transmitir(comando)
+</code></pre>
+        <p><strong>Decorador para medir tiempo:</strong></p>
+        <pre style="background:#0a0a0a;color:#e5e5e5;padding:12px;border-radius:8px;overflow-x:auto;font-family:'Courier New',monospace;font-size:13px;"><code>from functools import wraps
+import time
+
+def medir(fn):
+    @wraps(fn)
+    def envoltorio(*args, **kwargs):
+        t0 = time.perf_counter()
+        resultado = fn(*args, **kwargs)
+        print(f"{fn.__name__} tomó {time.perf_counter() - t0:.3f}s")
+        return resultado
+    return envoltorio
+
+@medir
+def propagar_orbita(tle, minutos):
+    ...
+</code></pre>
+        <p>Ambos patrones aparecen en entrevistas técnicas todo el tiempo. Y más importante: aparecen en código real de aeroespacial todo el tiempo. Domínalos.</p>
+    </div>
+
+<div class="content-section">
+        <h3>Siguiente: Lección 3.3 (Proyectos de Cartera y Dominio de GitHub)</h3>
+        <p>En la Lección 3.3, aprenderás GitHub como una herramienta profesional, no solo una caja de almacenamiento. Diseñarás y construirás cinco proyectos de cartera con especificaciones técnicas completas. Aprenderás el formato README que los reclutadores realmente leen. Entenderás cómo las perfiles de GitHub se examinan en empresas como SpaceX y Blue Origin. Al final, tu GitHub demostrará dominio de Python, APIs, análisis de datos, y control de versiones. Estarás listo para solicitar roles de ingeniero aeroespacial junior e ingeniero de datos.</p>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- LESSON 3.3 ENGLISH: Portfolio Projects and GitHub Mastery -->

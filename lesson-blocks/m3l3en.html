@@ -1,0 +1,261 @@
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","inLanguage":"en","name":"Lesson 3.3: Portfolio Projects and GitHub Mastery","educationalLevel":"University preparatory","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"Launch with AQN","provider":{"@type":"Organization","name":"Spacetech Inspira / AQN Academy"}},"author":{"@type":"Person","name":"Dr. Aracely Quispe Neira","jobTitle":"NASA JWST Lead Engineer"},"image":"https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l3.jpg","position":9}</script>
+<!-- open-graph-hint
+og:title       | Lesson 3.3: Portfolio Projects and GitHub Mastery
+og:image       | https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l3.jpg
+og:type        | article
+og:locale      | en_US
+og:site_name   | Launch with AQN
+-->
+<div id="m3l3en" class="lesson-container" style="margin-top: 60px;">
+<div style="margin: 0 0 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+  <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m3l3.jpg"
+       alt="GitHub profile with aerospace repositories — Lesson 3.3" style="width: 100%; height: auto; display: block;" loading="lazy">
+</div>
+    <span class="language-tag en-tag">ENGLISH</span>
+<!-- lesson-nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px;"><span><a href="#m3l2en" style="text-decoration: none; color: #2563eb; font-weight: 600;">← Previous: Lesson 3.2</a></span><span><a href="/course" style="text-decoration: none; color: #6b7280; font-weight: 500;">Course index</a></span></div>
+
+    <h1>Lesson 3.3: Portfolio Projects and GitHub Mastery</h1>
+    <h2>Module 3: Code Your Future</h2>
+
+    <div class="objectives-box">
+        <h3>Lesson Objectives</h3>
+        <ul>
+            <li>Understand why GitHub is the #1 hiring signal in aerospace engineering</li>
+            <li>Design five portfolio projects with full technical specifications</li>
+            <li>Master README writing: badges, demos, architecture, install instructions</li>
+            <li>Optimize your GitHub profile for recruiter searches</li>
+            <li>Build a portfolio that competes with aerospace internship and junior engineer roles</li>
+            <li>Learn the version control workflow that professional teams use</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>Why GitHub Is the Hiring Signal</h3>
+        <p>At NASA Goddard, JPL, SpaceX, Blue Origin, Rocket Lab, and Satellogic, recruiters do the same thing: They search GitHub for engineers who can code. They look at commit history. They check if a developer writes clean code. They see if projects are documented. They want to know if you collaborate, if you handle feedback, if you iterate. A GitHub profile is a resume written in code. It is the most honest thing you can show an employer.</p>
+        <p>Katya Echazarreta, who worked at NASA JPL and flew on Blue Origin New Shepard, has a public GitHub. Emiliano Kargieman, who founded Satellogic and took it public, has public repositories showing his path as a founder-engineer. The Tobacia brothers at Blue Origin contribute to open-source projects. They understand that your GitHub is your professional brand.</p>
+        <p><strong>What Recruiters Look For</strong></p>
+        <table class="data-table">
+            <tr>
+                <th>Signal</th>
+                <th>What It Shows</th>
+                <th>Why It Matters for Aerospace</th>
+            </tr>
+            <tr>
+                <td><strong>Commit consistency</strong></td>
+                <td>You code regularly, not in spurts</td>
+                <td>Mission-critical code needs daily discipline, not deadline cramming</td>
+            </tr>
+            <tr>
+                <td><strong>Project diversity</strong></td>
+                <td>You can learn and apply different languages, frameworks, tools</td>
+                <td>Aerospace uses Python, C++, MATLAB, hardware scripting, all in one mission</td>
+            </tr>
+            <tr>
+                <td><strong>Quality READMEs</strong></td>
+                <td>You communicate clearly with engineers who need to use your code</td>
+                <td>In real missions, your README is how teammates understand your flight software</td>
+            </tr>
+            <tr>
+                <td><strong>Clean code and comments</strong></td>
+                <td>Your code is readable and maintainable by others</td>
+                <td>Flight-critical software must pass code review by senior engineers</td>
+            </tr>
+            <tr>
+                <td><strong>Problem-solving in issues</strong></td>
+                <td>You debug systematically, document errors, iterate</td>
+                <td>Debugging a telemetry anomaly at 2 AM requires systematic thinking</td>
+            </tr>
+            <tr>
+                <td><strong>Collaboration (PRs, reviews)</strong></td>
+                <td>You work with teammates, accept feedback, improve code together</td>
+                <td>Every rocket mission is a team effort. Code review is non-negotiable.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h3>Five Portfolio Projects with Complete Specifications</h3>
+        <p><strong>Project 1: Satellite Tracker Web App (Real-Time TLE Data)</strong></p>
+        <ul>
+            <li>Tech stack: Python backend (Flask or FastAPI), HTML/CSS/JavaScript frontend, real-time TLE data from N2YO or NASA</li>
+            <li>Features: Search satellite by name, display current position on interactive map (Leaflet.js), show orbit prediction for next 24 hours, alert when satellite passes overhead</li>
+            <li>Data source: N2YO API or Space-Track.org TLE data, Open-Meteo for weather integration</li>
+            <li>Deliverables: GitHub repo, deployed web app (free tier on Heroku or Vercel), README with setup instructions and architecture diagram</li>
+        </ul>
+        <p><strong>Project 2: Rocket Equation Simulator with GUI (Real Physics)</strong></p>
+        <ul>
+            <li>Tech stack: Python with Tkinter GUI or PyQt, NumPy for calculations, Matplotlib for plots</li>
+            <li>Features: Input rocket parameters (mass, thrust, ISP, fuel), calculate delta-v, plot acceleration/altitude/velocity profiles over time, compare different rocket designs side-by-side</li>
+            <li>Real physics: Gravity losses, drag, actual rocket equation (not simplified)</li>
+            <li>Deliverables: GitHub repo, executable app, README with physics documentation and screenshots</li>
+        </ul>
+        <p><strong>Project 3: NASA Image of the Day CLI Tool (Learning APIs)</strong></p>
+        <ul>
+            <li>Tech stack: Python, requests library, argparse for command-line interface</li>
+            <li>Features: Fetch NASA Astronomy Photo of the Day, download image, display metadata (date, title, description), search by date range, save image locally or upload to cloud</li>
+            <li>Stretch goal: Create a web gallery of saved images with filtering and search</li>
+            <li>Deliverables: GitHub repo with detailed README, pip-installable package, documentation</li>
+        </ul>
+        <p><strong>Project 4: ISS Pass Predictor for Your City (End-to-End)</strong></p>
+        <ul>
+            <li>Tech stack: Python backend, web or CLI interface</li>
+            <li>Features: Enter your city name or coordinates, get ISS pass times for next 7 days, show rise time, max altitude, set time, brightness, direction of approach</li>
+            <li>Data: Real TLE data from NASA or N2YO, real ISS position calculations</li>
+            <li>Advanced features: Notifications (email/SMS when ISS is 2 hours away), historical database of past passes</li>
+            <li>Deliverables: GitHub repo, live web version, README, video demo</li>
+        </ul>
+        <p><strong>Project 5: Orbital Mechanics Visualizer (3D, Interactive)</strong></p>
+        <ul>
+            <li>Tech stack: Python with Matplotlib 3D or JavaScript with Three.js, NumPy for orbit propagation</li>
+            <li>Features: Visualize Earth, Moon, ISS, geostationary satellites, user-defined orbits in 3D. Animate orbital motion. Show gravity vectors. Allow interactive camera movement.</li>
+            <li>Real physics: Use SGP4 propagation model (pyorbital or skyfield library)</li>
+            <li>Deliverables: Interactive visualization (web version preferred), GitHub repo with documentation, video walkthrough</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h3>README Best Practices: What Gets You Hired</h3>
+        <p><strong>Essential Sections (In This Order)</strong></p>
+        <ol>
+            <li><strong>Project Title and One-Liner</strong> - What does it do in one sentence. Example: "Real-time ISS position tracker with orbital prediction and web interface."</li>
+            <li><strong>Badges</strong> - Status, license, build status, language. Example: ![Python](https://img.shields.io/badge/Python-3.9+-blue) ![License](https://img.shields.io/badge/License-MIT-green)</li>
+            <li><strong>Demo or Screenshot</strong> - Show, do not tell. Include a GIF or screenshot. If web app, include live link.</li>
+            <li><strong>Table of Contents</strong> - For longer READMEs, helps readers navigate.</li>
+            <li><strong>Features</strong> - Bullet list of what the project does. Focus on user value, not implementation.</li>
+            <li><strong>Getting Started (Install + Run)</strong> - Step-by-step: clone repo, create virtual environment, pip install requirements, run the app. Must work exactly as written.</li>
+            <li><strong>Usage Examples</strong> - Code snippets or command-line examples showing how to use the tool.</li>
+            <li><strong>Architecture / How It Works</strong> - Diagram or text explanation of the system design. Aerospace projects especially need this: what data flows where, what are the key algorithms.</li>
+            <li><strong>API Documentation</strong> - If you exposed functions or endpoints, document them (parameters, return values, errors).</li>
+            <li><strong>Testing</strong> - How to run tests. What tests exist. Coverage percentage if available.</li>
+            <li><strong>Contributing</strong> - How others can report bugs or submit code changes.</li>
+            <li><strong>License</strong> - MIT, Apache 2.0, or GPL. Aerospace companies prefer permissive licenses (MIT, Apache).</li>
+            <li><strong>Acknowledgments and References</strong> - Credits to APIs, libraries, papers, people who helped. Shows you collaborate.</li>
+        </ol>
+        <p><strong>Example README Structure for Satellite Tracker Project</strong></p>
+        <p>See template file: /downloads/aqn_github_readme_template.md</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Optimizing Your GitHub Profile for Aerospace Recruiters</h3>
+        <table class="data-table">
+            <tr>
+                <th>Profile Element</th>
+                <th>What Recruiters See</th>
+                <th>How to Optimize</th>
+            </tr>
+            <tr>
+                <td><strong>Profile Picture</strong></td>
+                <td>Your face, briefly</td>
+                <td>Professional headshot. Clear, friendly, good lighting. Not required but helps with recognition.</td>
+            </tr>
+            <tr>
+                <td><strong>Bio</strong></td>
+                <td>50 characters max. Your headline.</td>
+                <td>Example: "Aerospace engineer studying Python, orbital mechanics, and flight software. Learning with NASA data."</td>
+            </tr>
+            <tr>
+                <td><strong>Website/URL</strong></td>
+                <td>Link to portfolio, blog, or resume</td>
+                <td>Link to a personal website (free option: GitHub Pages) or LinkedIn. Not just your home city.</td>
+            </tr>
+            <tr>
+                <td><strong>Pinned Repositories (6 max)</strong></td>
+                <td>Your best work. First thing recruiters see.</td>
+                <td>Pin your five portfolio projects plus one open-source contribution. Each must have an excellent README.</td>
+            </tr>
+            <tr>
+                <td><strong>Contribution Graph</strong></td>
+                <td>Do you code consistently?</td>
+                <td>Aim for commits at least 3-4 days per week. Consistency matters more than volume.</td>
+            </tr>
+            <tr>
+                <td><strong>Repository Languages</strong></td>
+                <td>What stack do you know?</td>
+                <td>For aerospace: Python (essential), C++ (for control software), MATLAB (useful), JavaScript (if building web tools).</td>
+            </tr>
+            <tr>
+                <td><strong>Stars and Forks</strong></td>
+                <td>How many people found your work useful?</td>
+                <td>Do not worry early. Build good projects with documentation, stars follow.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h3>Version Control Workflow: How Professional Teams Collaborate</h3>
+        <p>You have written code. Now learn how teams work together. Every aerospace company uses this workflow:</p>
+        <ol>
+            <li><strong>Create a branch</strong> for each feature: git checkout -b feature/iss-predictor-alerts</li>
+            <li><strong>Make commits</strong> with clear messages: "Add email notification for ISS passes" (not "fix stuff")</li>
+            <li><strong>Push to GitHub</strong>: git push origin feature/iss-predictor-alerts</li>
+            <li><strong>Open a Pull Request (PR)</strong>: Write a description of what you changed and why. Link any related issues.</li>
+            <li><strong>Address feedback</strong>: Respond to code review comments, make improvements, commit again.</li>
+            <li><strong>Merge when approved</strong>: Branch gets merged into main. Feature is live.</li>
+        </ol>
+        <p>This process ensures code quality, team communication, and a reviewable history. Every line of flight-critical software has a PR behind it.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Video Lesson: Building a Portfolio That Opens Doors</h3>
+        <p><strong>Aracely's 1000-word video script (11 minutes)</strong></p>
+        <p>Hi. I'm Aracely. You have learned Python. You have built projects. Now comes the part that actually changes your life: showing the world what you have built.</p>
+        <p>When I was applying to NASA, I did not have a GitHub profile. It did not exist the way it does now. I had to print out code samples on paper. I had to explain my projects verbally. You are in a different generation. You have a permanent, searchable record of every line of code you have written. That is power. That is also responsibility.</p>
+        <p>I want you to understand something. Your GitHub profile is a portfolio that never sleeps. It is working for you 24/7. Right now, recruiters at SpaceX are searching GitHub for engineers who have built real projects with real APIs. Recruiters at Blue Origin are looking for people who write clean, commented code. Recruiters at Satellogic in Argentina, at Rocket Lab, at every space startup you can imagine, are doing the same searches. And your GitHub either shows up in those searches or it does not.</p>
+        <p>Let me tell you about Katya Echazarreta again, because her path is instructive. She grew up in a Mexican immigrant family. She went to a state university, Cal State Long Beach. She studied electrical engineering. Then she went to work at NASA's Jet Propulsion Laboratory. She built real software for the Perseverance rover and the Europa Clipper mission. Those projects are on her resume, but here is the thing: any recruiter can verify her work by looking at the code and the documentation. She can point to the actual tools she built, the problems she solved, the data she worked with. That is credential you cannot fake.</p>
+        <p>When she applied to be an astronaut, she had a GitHub profile. She had projects that showed she could code under pressure, debug problems, and deliver working software. She had code that actual space missions depend on. That is the difference between a person who says "I can code" and a person whose code literally runs in space.</p>
+        <p>I want you to build five projects. Not because five is a magic number. But because five projects show a recruiter that you are serious. They show that you can see a problem, build a solution, document it, and ship it. Five projects show consistency. They show that you have depth in multiple areas.</p>
+        <p>The Satellite Tracker teaches you APIs and web development. The Rocket Simulator teaches you physics and visualization. The NASA Image tool teaches you command-line interfaces and working with real data. The ISS Pass Predictor teaches you end-to-end thinking, from problem to solution. The Orbital Visualizer teaches you advanced mathematics and interactive design.</p>
+        <p>Together, these five projects prove that you understand aerospace fundamentals, that you can code real solutions, and that you can ship work. That is what aerospace companies want to see.</p>
+        <p>Now, let me talk about GitHub profiles. I know engineers at SpaceX and Blue Origin who literally have their hiring filtered by a GitHub search. They enter keywords: "Python, orbital mechanics, satellite tracking". They look at the results. They check the top-starred projects first. Those engineers then manually review the code, read the READMEs, and decide whether to reach out.</p>
+        <p>Your README is your first impression in that review. A README that is clear, complete, and honest will make a recruiter think: "This person knows how to communicate. This person understands that code is written for humans, not computers. I want to meet this person."</p>
+        <p>A README that is sloppy or incomplete makes a recruiter think: "This person does not care about documentation. If this project breaks, I will not be able to understand it. Pass."</p>
+        <p>Your README must include: why you built this project, what it does, how to install it, how to use it, what the architecture is, what the open questions are, and how someone can contribute. That is professionalism. That is how you show up as an engineer, not as a student who coded for a grade.</p>
+        <p>And your commit history matters. If you have written all your code in one giant commit called "Initial Commit", that tells a recruiter that you do not think like a professional. Real engineers commit early and often. They write commit messages that tell the story of the project: "Add ISS pass calculator", "Fix orbital element parsing", "Improve performance with NumPy vectorization". Your commit history is a narrative of your thinking.</p>
+        <p>At the end of this lesson, you will have five projects, all with excellent READMEs, all with clean commit histories, all with documentation that explains the aerospace domain. You will have a GitHub profile that shows a recruiter: "This person has done the work. This person understands the domain. This person can ship code."</p>
+        <p>That is when doors open. That is when you get interviews at companies building the future. That is when you become not a student learning to code, but an engineer with a portfolio.</p>
+        <p>Your GitHub is your reputation. Build it like it matters. Because it does.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Downloads: GitHub and Portfolio Templates</h3>
+        <p><a href="/downloads/aqn_github_readme_template.md" download>aqn_github_readme_template.md</a> (Template README.md with all best-practice sections)</p>
+        <p><a href="/downloads/aqn_portfolio_project_specs.pdf" download>aqn_portfolio_project_specs.pdf</a> (Complete specs for all 5 projects with wireframes and code stubs)</p>
+        <p><a href="/downloads/aqn_github_profile_checklist.pdf" download>aqn_github_profile_checklist.pdf</a> (Checklist: bio, pinned repos, contribution graph targets, project quality standards)</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Community Discussion</h3>
+        <p><strong>Reflection Prompt:</strong> Share the GitHub link to one of your five projects. Ask your cohort: What is one strength of your project? What is one feature you would add if you had more time? How would you improve your README based on feedback?</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Quiz: Portfolio and GitHub Mastery</h3>
+        <p><strong>Answer all 7 questions. Score 6 or higher to complete Module 3.</strong></p>
+        <ol>
+            <li>Write a complete README.md for one of your five portfolio projects. Include: project title, one-liner, badges, features, installation instructions, usage example, architecture explanation, and license. (Rubric: completeness, clarity, professionalism. Minimum 400 words.)</li>
+            <li>Create a commit message log (5-7 commits) as if you were building your Satellite Tracker project. Write realistic, descriptive commit messages that tell the story of development. Example: "Add real-time TLE parsing and N2YO API integration".</li>
+            <li>Describe your GitHub profile optimization strategy. What will your bio say? Which 6 projects will you pin? How will you demonstrate commit consistency over the next 3 months?</li>
+            <li>Choose one of your five projects. Explain its architecture using text or ASCII diagram: What are the main components? How do they communicate? What data flows where? What are the dependencies? (Minimum 300 words or clear diagram.)</li>
+            <li>Write a contribution guide for one of your projects. Tell future collaborators: How do they set up a development environment? How should they structure a pull request? What coding standards do you expect? How do you handle code review?</li>
+            <li>Identify an aerospace company (SpaceX, Blue Origin, Rocket Lab, etc.) and one of their hiring requirements (e.g., "Python, C++, understanding of flight software"). Describe how your five-project portfolio demonstrates that you meet this requirement.</li>
+            <li>Reflect: In 5-7 sentences, describe how building a portfolio of five projects has changed how you think about engineering. What did you learn about collaboration, documentation, and shipping code?</li>
+        </ol>
+        <p><strong>Answer Key and Rubric</strong></p>
+        <p><strong>Question 1 (Complete README):</strong> Must include all sections. Title and one-liner clear and concise. Badges present (language, license, etc.). Features bullet list covers core functionality. Installation instructions are step-by-step and tested. Usage examples include code snippets or commands. Architecture explanation is clear to someone unfamiliar with the project. License is specified (MIT or Apache recommended for aerospace). Minimum 400 words. Professional tone throughout.</p>
+        <p><strong>Question 2 (Commit log):</strong> Each commit message starts with an action verb ("Add", "Fix", "Improve", etc.). Messages are specific (not "update code"). Log tells a coherent development story. Commits seem to represent logical, reviewable units of work. Shows understanding of professional development workflow.</p>
+        <p><strong>Question 3 (Profile optimization):</strong> Bio is specific to aerospace/coding, not generic. Shows understanding of what recruiters search for. Six pinned projects are your best work with strong READMEs. Commit consistency strategy is realistic and measurable (e.g., "Code 4 days/week, 10+ commits/month"). Shows awareness of GitHub as a professional tool.</p>
+        <p><strong>Question 4 (Architecture explanation):</strong> Identifies main components (backend, frontend, APIs, databases, etc.). Shows data flow clearly (input sources, processing, outputs). Lists dependencies explicitly (libraries, APIs, datasets). Explains why components are organized this way, not just what they are. Diagram (if provided) is clear and labeled. Minimum 300 words or clear, professional diagram.</p>
+        <p><strong>Question 5 (Contribution guide):</strong> Development setup instructions are complete (Python version, virtual env, pip install, required API keys). Pull request template is defined (title format, description requirements, testing checklist). Code standards are explicit (style guide reference like PEP 8, commenting requirements, test coverage). Code review process is defined (who reviews, timeline, feedback expectations). Shows maturity and collaboration mindset.</p>
+        <p><strong>Question 6 (Company/requirement mapping):</strong> Student correctly identifies a real aerospace company and a real job requirement. Describes specifically which project(s) demonstrate that skill. Examples are concrete, not vague. Shows understanding of how a portfolio builds credibility with real employers.</p>
+        <p><strong>Question 7 (Reflection):</strong> Genuine reflection on learning. Mentions specific skills or mindsets developed (collaboration, documentation, iterating on feedback, shipping code). Shows growth from "I can code" to "I can engineer". Connects portfolio work to real aerospace engineering practices.</p>
+    </div>
+
+    <div class="content-section">
+        <h3>Module 3 Complete</h3>
+        <p>You have earned mastery of Python fundamentals, intermediate Python with OOP and APIs, and portfolio development with professional GitHub practices. You are now ready for Module 4, where you will explore aerospace research methodologies, technical writing, and the engineering behind real missions. You have the coding skills. Now it is time to understand the science.</p>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- LESSON 3.3 SPANISH: Proyectos de Cartera y Dominio de GitHub -->

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificado de Finalización — Despega con AQN</title>
+<meta name="description" content="Certificado oficial de finalización del programa Despega con AQN con Dra. Aracely Quispe Neira.">
+
+<!-- OG for shares -->
+<meta property="og:title" content="Certificado Despega con AQN">
+<meta property="og:description" content="Certificado oficial del programa Despega con AQN.">
+<meta property="og:image" content="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/badges/level_6_comandante.jpg">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --ink: #0a1233;
+    --gold: #c08a2e;
+    --gold-light: #e6c16a;
+    --paper: #fdfbf4;
+    --paper-edge: #f1ecdb;
+    --accent: #2563eb;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: "Georgia", "Times New Roman", serif;
+    background: #e8e5dc;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+
+  /* Toolbar — only visible in browser, hidden on print */
+  .toolbar {
+    width: 100%;
+    max-width: 1080px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .toolbar h1 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .toolbar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 20px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn:hover { background: #1d4ed8; }
+  .btn.secondary { background: var(--ink); }
+  .btn.secondary:hover { background: #1e2756; }
+  .fields {
+    width: 100%;
+    max-width: 1080px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .fields label {
+    display: block;
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .fields input, .fields select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* CERTIFICATE — 4:3 landscape, print at 11in x 8.5in */
+  .certificate-wrap {
+    width: 100%;
+    max-width: 1080px;
+    aspect-ratio: 11 / 8.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .certificate {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at top left, #fffef8 0%, var(--paper) 100%);
+    border: 14px double var(--gold);
+    position: relative;
+    padding: 5% 8%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    overflow: hidden;
+  }
+  .certificate::before, .certificate::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 2px solid var(--gold-light);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  .certificate::before { top: -80px; left: -80px; }
+  .certificate::after { bottom: -80px; right: -80px; }
+
+  .brand-mark {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--gold);
+    margin-bottom: 36px;
+  }
+  .presented-to {
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: system-ui, sans-serif;
+    margin-bottom: 8px;
+  }
+  .name {
+    font-size: clamp(30px, 5.5vw, 56px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding: 0 24px 12px;
+    border-bottom: 1px solid var(--gold);
+    display: inline-block;
+    min-width: 50%;
+  }
+  .program-line {
+    font-size: clamp(14px, 2.2vw, 18px);
+    color: var(--ink);
+    max-width: 90%;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+  }
+  .program-name {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: clamp(16px, 2.6vw, 22px);
+    margin-top: 4px;
+    display: block;
+  }
+  .meta {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-top: 24px;
+  }
+  .meta-block {
+    flex: 1;
+    text-align: center;
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .meta-value {
+    font-family: Georgia, serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-style: italic;
+    color: var(--ink);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--ink);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 6px;
+  }
+  .signature-line {
+    font-family: "Brush Script MT", "Snell Roundhand", cursive;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: normal;
+    color: var(--ink);
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  .seal {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+  .seal svg { width: 100%; height: 100%; }
+
+  .verify {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 12px;
+    letter-spacing: 0.05em;
+  }
+  .verify a { color: var(--accent); text-decoration: none; }
+
+  @media print {
+    @page { size: 11in 8.5in; margin: 0; }
+    body { background: #fff; padding: 0; }
+    .toolbar, .fields { display: none !important; }
+    .certificate-wrap {
+      max-width: none;
+      width: 11in;
+      height: 8.5in;
+      aspect-ratio: auto;
+    }
+    .certificate {
+      box-shadow: none;
+      width: 11in;
+      height: 8.5in;
+    }
+  }
+  @media (max-width: 720px) {
+    .certificate { padding: 20px; border-width: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>Certificado de finalización</h1>
+  <div class="actions">
+    <button class="btn secondary" id="btn-lang">English</button>
+    <button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+    <a class="btn" id="btn-share" href="#" target="_blank" rel="noopener">Compartir en LinkedIn</a>
+  </div>
+</div>
+
+<div class="fields">
+  <div>
+    <label for="f-name">Nombre completo</label>
+    <input id="f-name" type="text" placeholder="Nombre y apellido" value="">
+  </div>
+  <div>
+    <label for="f-date">Fecha de finalización</label>
+    <input id="f-date" type="date" value="">
+  </div>
+  <div>
+    <label for="f-cohort">Cohorte</label>
+    <input id="f-cohort" type="text" placeholder="Primavera 2026" value="Primavera 2026">
+  </div>
+  <div>
+    <label for="f-id">Certificate ID</label>
+    <input id="f-id" type="text" placeholder="AQN-XXXX-2026" value="">
+  </div>
+</div>
+
+<div class="certificate-wrap">
+  <section class="certificate" id="cert">
+    <div class="brand-mark" id="c-brand">Spacetech Inspira · AQN Academy</div>
+    <h1 class="title" id="c-title">Certificado de Finalización</h1>
+    <p class="subtitle" id="c-subtitle">Certificate of Completion</p>
+
+    <div class="presented-to" id="c-presented">Otorgado a</div>
+    <h2 class="name" id="c-name">[ Tu nombre aquí ]</h2>
+
+    <p class="program-line" id="c-program">
+      Por haber completado con éxito las ocho unidades del programa
+      <span class="program-name" id="c-course">Despega con AQN: Diseña una Carrera STEM con Impacto Global</span>
+      bajo la mentoría directa de la Dra. Aracely Quispe Neira, Ingeniera Líder del James Webb Space Telescope de NASA.
+    </p>
+
+    <div class="meta">
+      <div class="meta-block">
+        <div class="meta-value" id="c-date">—</div>
+        <div id="c-label-date">Fecha</div>
+      </div>
+      <div class="meta-block">
+        <div class="signature-line">Aracely Quispe Neira</div>
+        <div id="c-label-sig">Directora del programa · NASA JWST</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-value" id="c-id">—</div>
+        <div id="c-label-id">Certificate ID</div>
+      </div>
+    </div>
+
+    <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#e6c16a"/>
+          <stop offset="100%" stop-color="#c08a2e"/>
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="url(#gold-grad)" stroke-width="3"/>
+      <circle cx="50" cy="50" r="38" fill="none" stroke="url(#gold-grad)" stroke-width="1"/>
+      <text x="50" y="46" font-family="Georgia, serif" font-size="9" fill="url(#gold-grad)" text-anchor="middle" font-weight="700">AQN</text>
+      <text x="50" y="58" font-family="system-ui, sans-serif" font-size="5" fill="url(#gold-grad)" text-anchor="middle" letter-spacing="1">ACADEMY</text>
+      <path d="M 30 70 L 50 62 L 70 70" fill="none" stroke="url(#gold-grad)" stroke-width="1.5"/>
+    </svg>
+
+    <div class="verify" id="c-verify">Verificar en https://despegaconaqn.com/verificar/&lt;ID&gt;</div>
+  </section>
+</div>
+
+<script>
+(function() {
+  "use strict";
+
+  var state = { lang: "es" };
+
+  var copy = {
+    es: {
+      toolbarTitle: "Certificado de finalización",
+      btnLang: "English",
+      btnPrint: "Imprimir / Guardar PDF",
+      btnShare: "Compartir en LinkedIn",
+      lblName: "Nombre completo",
+      lblDate: "Fecha de finalización",
+      lblCohort: "Cohorte",
+      lblId: "Certificate ID",
+      brand: "Spacetech Inspira · AQN Academy",
+      title: "Certificado de Finalización",
+      subtitle: "Certificate of Completion",
+      presented: "Otorgado a",
+      defaultName: "[ Tu nombre aquí ]",
+      program: "Por haber completado con éxito las ocho unidades del programa",
+      course: "Despega con AQN: Diseña una Carrera STEM con Impacto Global",
+      mentor: "bajo la mentoría directa de la Dra. Aracely Quispe Neira, Ingeniera Líder del James Webb Space Telescope de NASA.",
+      labelDate: "Fecha",
+      labelSig: "Directora del programa · NASA JWST",
+      labelId: "Certificate ID"
+    },
+    en: {
+      toolbarTitle: "Certificate of completion",
+      btnLang: "Español",
+      btnPrint: "Print / Save PDF",
+      btnShare: "Share on LinkedIn",
+      lblName: "Full name",
+      lblDate: "Completion date",
+      lblCohort: "Cohort",
+      lblId: "Certificate ID",
+      brand: "Spacetech Inspira · AQN Academy",
+      title: "Certificate of Completion",
+      subtitle: "Certificado de Finalización",
+      presented: "Awarded to",
+      defaultName: "[ Your name here ]",
+      program: "For successfully completing all eight units of the program",
+      course: "Launch with AQN: Design a Global STEM Career",
+      mentor: "under the direct mentorship of Dr. Aracely Quispe Neira, Lead Engineer for NASA's James Webb Space Telescope.",
+      labelDate: "Date",
+      labelSig: "Program Director · NASA JWST",
+      labelId: "Certificate ID"
+    }
+  };
+
+  function fmtDate(iso, lang) {
+    if (!iso) return "—";
+    try {
+      var d = new Date(iso + "T00:00:00");
+      return d.toLocaleDateString(lang === "es" ? "es-ES" : "en-US", {
+        year: "numeric", month: "long", day: "numeric"
+      });
+    } catch(e) { return iso; }
+  }
+
+  function applyLang() {
+    var c = copy[state.lang];
+    document.documentElement.lang = state.lang;
+    document.querySelector(".toolbar h1").textContent = c.toolbarTitle;
+    document.getElementById("btn-lang").textContent = c.btnLang;
+    document.querySelectorAll(".btn")[1].textContent = c.btnPrint;
+    document.getElementById("btn-share").textContent = c.btnShare;
+    document.querySelector('label[for="f-name"]').textContent = c.lblName;
+    document.querySelector('label[for="f-date"]').textContent = c.lblDate;
+    document.querySelector('label[for="f-cohort"]').textContent = c.lblCohort;
+    document.querySelector('label[for="f-id"]').textContent = c.lblId;
+    document.getElementById("c-brand").textContent = c.brand;
+    document.getElementById("c-title").textContent = c.title;
+    document.getElementById("c-subtitle").textContent = c.subtitle;
+    document.getElementById("c-presented").textContent = c.presented;
+    document.getElementById("c-course").textContent = c.course;
+    document.getElementById("c-label-date").textContent = c.labelDate;
+    document.getElementById("c-label-sig").textContent = c.labelSig;
+    document.getElementById("c-label-id").textContent = c.labelId;
+    // program-line: rebuild with course + mentor text
+    document.getElementById("c-program").innerHTML =
+      c.program + ' <span class="program-name" id="c-course">' + c.course + '</span> ' + c.mentor;
+  }
+
+  function render() {
+    var name = document.getElementById("f-name").value.trim();
+    var date = document.getElementById("f-date").value;
+    var cohort = document.getElementById("f-cohort").value.trim();
+    var id = document.getElementById("f-id").value.trim();
+    var c = copy[state.lang];
+
+    document.getElementById("c-name").textContent = name || c.defaultName;
+    document.getElementById("c-date").textContent = fmtDate(date, state.lang) + (cohort ? " · " + cohort : "");
+    document.getElementById("c-id").textContent = id || "—";
+    document.getElementById("c-verify").innerHTML =
+      "Verificar en <a href='https://despegaconaqn.com/verificar/" + encodeURIComponent(id || "ID") + "' target='_blank' rel='noopener'>despegaconaqn.com/verificar/" + (id || "ID") + "</a>";
+
+    // LinkedIn share URL (adds certification to profile)
+    var linkedin = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" +
+      "&name=" + encodeURIComponent(c.course) +
+      "&organizationName=" + encodeURIComponent("Spacetech Inspira / AQN Academy") +
+      (date ? "&issueYear=" + (new Date(date+"T00:00:00").getFullYear()) + "&issueMonth=" + (new Date(date+"T00:00:00").getMonth()+1) : "") +
+      (id ? "&certId=" + encodeURIComponent(id) : "") +
+      "&certUrl=" + encodeURIComponent("https://despegaconaqn.com/verificar/" + (id || ""));
+    document.getElementById("btn-share").href = linkedin;
+  }
+
+  // Pre-fill from URL params
+  var params = new URLSearchParams(window.location.search);
+  if (params.get("name")) document.getElementById("f-name").value = params.get("name");
+  if (params.get("date")) document.getElementById("f-date").value = params.get("date");
+  if (params.get("cohort")) document.getElementById("f-cohort").value = params.get("cohort");
+  if (params.get("id")) document.getElementById("f-id").value = params.get("id");
+  if (params.get("lang") === "en") state.lang = "en";
+
+  document.getElementById("btn-lang").addEventListener("click", function() {
+    state.lang = state.lang === "es" ? "en" : "es";
+    applyLang();
+    render();
+  });
+  ["f-name","f-date","f-cohort","f-id"].forEach(function(id) {
+    document.getElementById(id).addEventListener("input", render);
+  });
+
+  applyLang();
+  render();
+})();
+</script>
+
+</body>
+</html>
