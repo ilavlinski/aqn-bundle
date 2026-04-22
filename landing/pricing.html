@@ -420,9 +420,91 @@
 
 </main>
 
+<!-- Waitlist fallback — activated automatically when Stripe payment links are still placeholders.
+     Captures email + desired tier/region to a GHL webhook while payment wiring is pending.
+     Swap the WAITLIST_WEBHOOK_URL below with a real GHL webhook-trigger URL when ready. -->
+<div id="waitlist-banner" class="hidden" role="status" aria-live="polite" style="
+  position: sticky; bottom: 0; left: 0; right: 0; z-index: 50;
+  background: linear-gradient(90deg, #0B1D3A, #1565C0);
+  color: #fff; padding: 14px 20px; text-align: center;
+  border-top: 2px solid #fbbf24;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+">
+  <span id="waitlist-banner-text">🚀 Apertura muy próxima. Únete a la lista para recibir el enlace de pago y precio de fundador.</span>
+</div>
+
+<div id="waitlist-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="wl-title" style="
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(3, 8, 20, 0.78);
+  display: grid; place-items: center;
+  padding: 20px;
+">
+  <div style="
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid rgba(251,191,36,0.3);
+    border-radius: 14px;
+    max-width: 460px; width: 100%;
+    padding: 32px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  ">
+    <h3 id="wl-title" style="color:#fbbf24; font-size: 1.3em; margin-bottom: 8px;">Te avisamos en cuanto abra</h3>
+    <p id="wl-subtitle" style="color:#cbd5e1; font-size: 0.95em; margin-bottom: 20px;">Déjanos tu correo y serás de los primeros en recibir el enlace de pago y la fecha exacta de la próxima cohorte.</p>
+
+    <div id="wl-tier-chip" style="
+      display:inline-block; padding:4px 12px;
+      background: rgba(251,191,36,0.15); color:#fbbf24;
+      border-radius: 999px; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 18px; border: 1px solid rgba(251,191,36,0.3);
+    ">Nivel: —</div>
+
+    <form id="wl-form" novalidate>
+      <input type="email" id="wl-email" required placeholder="tu@email.com" style="
+        width:100%; padding: 12px 14px;
+        background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 8px; font-size: 1em; margin-bottom: 10px;
+      ">
+      <input type="text" id="wl-name" placeholder="Tu nombre (opcional)" style="
+        width:100%; padding: 12px 14px;
+        background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 8px; font-size: 1em; margin-bottom: 16px;
+      ">
+      <input type="hidden" id="wl-sku" value="">
+      <input type="hidden" id="wl-tier" value="">
+      <input type="hidden" id="wl-region" value="">
+      <input type="hidden" id="wl-lang" value="">
+      <input type="hidden" id="wl-amount" value="">
+      <input type="hidden" id="wl-source" value="pricing_waitlist">
+
+      <button type="submit" id="wl-submit" style="
+        width:100%; padding: 13px 20px;
+        background: #fbbf24; color: #0B1D3A; border: 0;
+        border-radius: 999px; font-size: 1em; font-weight: 800;
+        cursor: pointer; transition: transform 0.15s;
+      ">Unirme a la lista</button>
+      <button type="button" id="wl-cancel" style="
+        width:100%; padding: 10px 20px; margin-top: 10px;
+        background: transparent; color: #94a3b8; border: 0;
+        font-size: 0.9em; cursor: pointer;
+      ">Cancelar</button>
+    </form>
+
+    <div id="wl-success" class="hidden" style="text-align:center; padding: 10px 0;">
+      <div style="font-size: 2.6em; margin-bottom: 8px;">✅</div>
+      <p style="color:#fff; font-size: 1.05em; margin-bottom: 6px;">¡Estás dentro!</p>
+      <p style="color:#cbd5e1; font-size: 0.9em; margin-bottom: 18px;">Te avisaremos por correo en cuanto abra el cupo.</p>
+      <button type="button" id="wl-close-ok" style="
+        padding: 10px 24px; background: #fbbf24; color: #0B1D3A;
+        border: 0; border-radius: 999px; font-weight: 700; cursor: pointer;
+      ">Entendido</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container">
-    <p>© 2026 Spacetech Inspira · <a href="/privacidad" style="color:var(--text-dim);">Privacidad</a> · <a href="/terminos" style="color:var(--text-dim);">Términos</a> · contacto@despegaconaqn.com</p>
+    <p>© 2026 Spacetech Inspira · <a href="/privacidad" style="color:var(--text-dim);">Privacidad</a> · <a href="/terminos" style="color:var(--text-dim);">Términos</a> · <a href="/faq" style="color:var(--text-dim);">FAQ</a> · contacto@despegaconaqn.com</p>
   </div>
 </footer>
 
@@ -519,6 +601,214 @@
         .catch(function() { /* ignore */ });
     } catch(e) { /* ignore */ }
   }
+})();
+
+/* ---------------------------------------------------------------------------
+   WAITLIST FALLBACK MODULE
+   Activates automatically when any .cta-btn still has href="STRIPE_LINK_AQN_*".
+   Converts CTAs into waitlist modal triggers and captures leads via webhook.
+   When you paste real Stripe URLs into the href attributes, this module
+   detects the change and becomes inert — buttons function as normal payment
+   links with no further action needed.
+   --------------------------------------------------------------------------- */
+(function() {
+  "use strict";
+
+  // SWAP this URL with the real GHL webhook-trigger endpoint when ready.
+  // Format: https://services.leadconnectorhq.com/hooks/<HOOK_ID>/webhook-trigger/<WORKFLOW_ID>
+  var WAITLIST_WEBHOOK_URL = "WAITLIST_WEBHOOK_URL";
+
+  // SKU -> labels + amount (mirrors launch/data/products.json)
+  var SKU_MAP = {
+    "aqn-founding-latam": { tier: "Fundadores",  region: "LatAm",     lang: "es", amount: 797,  label: "Fundadores · LatAm" },
+    "aqn-standard-latam": { tier: "Estándar",    region: "LatAm",     lang: "es", amount: 997,  label: "Estándar · LatAm" },
+    "aqn-vip-latam":      { tier: "VIP",         region: "LatAm",     lang: "es", amount: 2200, label: "VIP · LatAm" },
+    "aqn-founding-us":    { tier: "Founding",    region: "US/Global", lang: "en", amount: 997,  label: "Founding · US/Global" },
+    "aqn-standard-us":    { tier: "Standard",    region: "US/Global", lang: "en", amount: 1497, label: "Standard · US/Global" },
+    "aqn-vip-us":         { tier: "VIP",         region: "US/Global", lang: "en", amount: 2500, label: "VIP · US/Global" }
+  };
+
+  // Map placeholder hrefs to SKU keys.
+  var HREF_TO_SKU = {
+    "STRIPE_LINK_AQN_FOUNDING_LATAM": "aqn-founding-latam",
+    "STRIPE_LINK_AQN_STANDARD_LATAM": "aqn-standard-latam",
+    "STRIPE_LINK_AQN_VIP_LATAM":      "aqn-vip-latam",
+    "STRIPE_LINK_AQN_FOUNDING_US":    "aqn-founding-us",
+    "STRIPE_LINK_AQN_STANDARD_US":    "aqn-standard-us",
+    "STRIPE_LINK_AQN_VIP_US":         "aqn-vip-us"
+  };
+
+  var banner = document.getElementById("waitlist-banner");
+  var modal  = document.getElementById("waitlist-modal");
+  var form   = document.getElementById("wl-form");
+  var success = document.getElementById("wl-success");
+
+  var ctas = document.querySelectorAll(".cta-btn");
+  var pendingCount = 0;
+
+  ctas.forEach(function(cta) {
+    var href = (cta.getAttribute("href") || "").trim();
+    // If href still matches a placeholder OR starts with STRIPE_LINK_, intercept it.
+    var isPlaceholder = /^STRIPE_LINK_AQN_/.test(href) || HREF_TO_SKU.hasOwnProperty(href);
+    if (!isPlaceholder) return;
+
+    pendingCount++;
+    var sku = HREF_TO_SKU[href] || "";
+    cta.setAttribute("data-waitlist-sku", sku);
+    // Change button label subtly to signal waitlist mode — but keep tier context.
+    var original = cta.textContent.trim();
+    cta.setAttribute("data-original-label", original);
+    // Derive language from href suffix
+    var lang = /_US$/.test(href) ? "en" : "es";
+    var newLabel = lang === "en"
+      ? "Join the waitlist — " + original.split("—")[1].trim()
+      : "Únete a la lista — " + original.split("—")[1].trim();
+    cta.textContent = newLabel;
+    cta.removeAttribute("target");
+    cta.removeAttribute("rel");
+    cta.setAttribute("href", "#waitlist");
+    cta.addEventListener("click", function(ev) {
+      ev.preventDefault();
+      openModal(sku);
+    });
+  });
+
+  // If all CTAs were real (no placeholders), hide banner + unload modal markup.
+  if (pendingCount === 0) {
+    if (banner) banner.remove();
+    if (modal) modal.remove();
+    return;
+  }
+
+  // Show the waitlist banner
+  banner.classList.remove("hidden");
+
+  // Swap banner text by region toggle
+  var btnLatam = document.getElementById("btn-latam");
+  var btnUs    = document.getElementById("btn-us");
+  function applyBannerCopy() {
+    var isUs = btnUs && btnUs.classList.contains("active");
+    document.getElementById("waitlist-banner-text").textContent = isUs
+      ? "🚀 Opening very soon. Join the waitlist to get the payment link and founding-rate pricing."
+      : "🚀 Apertura muy próxima. Únete a la lista para recibir el enlace de pago y precio de fundador.";
+  }
+  applyBannerCopy();
+  if (btnLatam) btnLatam.addEventListener("click", applyBannerCopy);
+  if (btnUs)    btnUs.addEventListener("click", applyBannerCopy);
+
+  // Modal open/close
+  function openModal(sku) {
+    var data = SKU_MAP[sku] || { tier: "—", region: "—", lang: "es", amount: 0, label: "Nivel: —" };
+    document.getElementById("wl-tier-chip").textContent = "Nivel: " + data.label;
+    document.getElementById("wl-sku").value    = sku;
+    document.getElementById("wl-tier").value   = data.tier.toLowerCase();
+    document.getElementById("wl-region").value = data.region === "LatAm" ? "latam" : "us";
+    document.getElementById("wl-lang").value   = data.lang;
+    document.getElementById("wl-amount").value = String(data.amount);
+
+    // Language-swap modal copy if US tier
+    if (data.lang === "en") {
+      document.getElementById("wl-title").textContent    = "We'll let you know as soon as it opens";
+      document.getElementById("wl-subtitle").textContent = "Leave your email and you'll be among the first to receive the payment link and exact cohort date.";
+      document.getElementById("wl-tier-chip").textContent = "Tier: " + data.label;
+      document.getElementById("wl-email").placeholder   = "you@email.com";
+      document.getElementById("wl-name").placeholder    = "Your name (optional)";
+      document.getElementById("wl-submit").textContent  = "Join the waitlist";
+      document.getElementById("wl-cancel").textContent  = "Cancel";
+    } else {
+      document.getElementById("wl-title").textContent    = "Te avisamos en cuanto abra";
+      document.getElementById("wl-subtitle").textContent = "Déjanos tu correo y serás de los primeros en recibir el enlace de pago y la fecha exacta de la próxima cohorte.";
+      document.getElementById("wl-email").placeholder   = "tu@email.com";
+      document.getElementById("wl-name").placeholder    = "Tu nombre (opcional)";
+      document.getElementById("wl-submit").textContent  = "Unirme a la lista";
+      document.getElementById("wl-cancel").textContent  = "Cancelar";
+    }
+
+    // Reset visibility
+    form.classList.remove("hidden");
+    success.classList.add("hidden");
+    modal.classList.remove("hidden");
+    setTimeout(function() { document.getElementById("wl-email").focus(); }, 100);
+  }
+
+  function closeModal() {
+    modal.classList.add("hidden");
+  }
+
+  document.getElementById("wl-cancel").addEventListener("click", closeModal);
+  document.getElementById("wl-close-ok").addEventListener("click", closeModal);
+  modal.addEventListener("click", function(ev) {
+    if (ev.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", function(ev) {
+    if (ev.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+  });
+
+  // Form submit
+  form.addEventListener("submit", function(ev) {
+    ev.preventDefault();
+    var email = document.getElementById("wl-email").value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById("wl-email").style.borderColor = "#ef4444";
+      return;
+    }
+    var payload = {
+      email: email,
+      name: document.getElementById("wl-name").value.trim(),
+      sku: document.getElementById("wl-sku").value,
+      tier: document.getElementById("wl-tier").value,
+      region: document.getElementById("wl-region").value,
+      lang: document.getElementById("wl-lang").value,
+      amount_usd: document.getElementById("wl-amount").value,
+      source: document.getElementById("wl-source").value,
+      referrer: document.referrer || "",
+      url: window.location.href
+    };
+
+    var submitBtn = document.getElementById("wl-submit");
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.7";
+    submitBtn.textContent = payload.lang === "en" ? "Sending..." : "Enviando...";
+
+    // POST to the GHL webhook if configured. If not configured yet, just log locally
+    // and still show success — the user gets feedback; you'll see the attempt in
+    // window.__AQN_WAITLIST_LEADS__ during the dev window.
+    var attempts = [];
+    attempts.push({
+      at: new Date().toISOString(),
+      payload: payload
+    });
+    window.__AQN_WAITLIST_LEADS__ = (window.__AQN_WAITLIST_LEADS__ || []).concat(attempts);
+
+    if (WAITLIST_WEBHOOK_URL && !/WAITLIST_WEBHOOK_URL/.test(WAITLIST_WEBHOOK_URL)) {
+      fetch(WAITLIST_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(function() { /* swallow — we've captured locally as fallback */ });
+    }
+
+    // Fire GA4 lead event
+    try {
+      if (typeof gtag === "function") {
+        gtag("event", "generate_lead", {
+          currency: "USD",
+          value: Number(payload.amount_usd) || 0,
+          items: [{ item_id: payload.sku, item_name: payload.tier + "-" + payload.region, price: Number(payload.amount_usd) || 0 }]
+        });
+      }
+    } catch(e) {}
+
+    // Flip to success state
+    setTimeout(function() {
+      form.classList.add("hidden");
+      success.classList.remove("hidden");
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "1";
+    }, 400);
+  });
+
 })();
 </script>
 

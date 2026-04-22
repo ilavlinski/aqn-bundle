@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas Frecuentes · Despega con AQN / Launch with AQN</title>
+<meta name="description" content="Preguntas frecuentes sobre Despega con AQN / Launch with AQN, el programa premium de mentoría en vivo con la Dra. Aracely Quispe Neira (16+ años en NASA, JWST).">
+<meta property="og:title" content="Preguntas Frecuentes · Despega con AQN">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m1l1.jpg">
+
+<!-- Schema.org FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Preguntas Frecuentes · Despega con AQN",
+  "inLanguage": "es",
+  "mainEntity": [
+    {"@type":"Question","name":"¿Qué es Despega con AQN?","acceptedAnswer":{"@type":"Answer","text":"Es un programa premium de mentoría en vivo en grupo con la Dra. Aracely Quispe Neira (16+ años en NASA, Ingeniera Líder del lanzamiento JWST). No es un curso auto-guiado: son cohortes en vivo con sesiones semanales, Q&A directo con la Dra. Quispe y una hoja de ruta STEM personalizada de 5 módulos."}},
+    {"@type":"Question","name":"¿Cuánto cuesta y qué incluye?","acceptedAnswer":{"@type":"Answer","text":"Ofrecemos 3 niveles por región. LatAm: Fundadores $797, Estándar $997, VIP $2,200 USD. US/Global: Founding $997, Standard $1,497, VIP $2,500 USD. Todos los niveles incluyen las 5 sesiones en vivo; VIP añade Q&A prioritario y acceso directo adicional con la Dra. Quispe."}},
+    {"@type":"Question","name":"¿Hay garantía?","acceptedAnswer":{"@type":"Answer","text":"Sí. Garantía de 14 días: si asistes a la primera sesión y no te sirve, te devolvemos el 100%."}},
+    {"@type":"Question","name":"¿En qué idioma se dicta?","acceptedAnswer":{"@type":"Answer","text":"Las cohortes LatAm son en español. Las cohortes US/Global se imparten en inglés. Los materiales están disponibles en ambos idiomas."}}
+  ]
+}
+</script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1D3A;
+    --blue: #1565C0;
+    --gold: #c08a2e;
+    --cream: #fffbeb;
+    --ink: #1a1f2e;
+    --muted: #6b7280;
+    --bg: #fafbfc;
+    --card: #fff;
+    --border: #e5e7eb;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  .page-header {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    padding: 60px 24px 50px;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: 2.4em;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .page-header p {
+    font-size: 1.05em;
+    opacity: 0.92;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .lang-switch { margin-top: 16px; font-size: 14px; opacity: 0.85; }
+  .lang-switch a { color: #fbbf24; text-decoration: underline; }
+
+  main {
+    max-width: 880px;
+    margin: -30px auto 60px;
+    padding: 0 20px;
+  }
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .toc h2 {
+    color: var(--navy);
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 4px 20px;
+  }
+  .toc li {
+    counter-increment: toc;
+    padding: 4px 0;
+  }
+  .toc li::before {
+    content: counter(toc) ". ";
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .toc a { color: var(--blue); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section.faq-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 22px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  section.faq-section h2 {
+    color: var(--navy);
+    font-size: 1.4em;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+  }
+  details {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+  details:last-child { border-bottom: 0; padding-bottom: 4px; }
+  summary {
+    font-weight: 600;
+    font-size: 1.05em;
+    cursor: pointer;
+    color: var(--ink);
+    list-style: none;
+    padding-right: 28px;
+    position: relative;
+    line-height: 1.4;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: -2px;
+    font-size: 1.4em;
+    color: var(--gold);
+    font-weight: 300;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { content: "−"; }
+  details[open] summary { color: var(--blue); }
+  .answer {
+    margin-top: 10px;
+    color: #374151;
+    padding-left: 0;
+  }
+  .answer p { margin-bottom: 8px; }
+  .answer ul { margin: 8px 0 8px 22px; }
+  .answer li { margin-bottom: 4px; }
+  .answer strong { color: var(--navy); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+    font-size: 0.95em;
+  }
+  .pricing-grid .region {
+    padding: 10px 14px;
+    background: #f8fafc;
+    border-left: 3px solid var(--blue);
+    border-radius: 4px;
+  }
+  .pricing-grid .region strong { display: block; color: var(--navy); margin-bottom: 4px; }
+  @media (max-width: 620px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+  }
+
+  .cta-bar {
+    margin: 40px auto 0;
+    max-width: 880px;
+    padding: 32px 30px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    border-radius: 12px;
+  }
+  .cta-bar h3 { color: #fbbf24; font-size: 1.4em; margin-bottom: 8px; }
+  .cta-bar p { margin-bottom: 18px; opacity: 0.92; }
+  .cta-button {
+    display: inline-block;
+    background: #fbbf24;
+    color: var(--navy);
+    font-weight: 700;
+    padding: 14px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1.05em;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251,191,36,0.4);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px 40px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  footer a { color: var(--blue); text-decoration: none; margin: 0 8px; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Preguntas Frecuentes</h1>
+  <p>Todo lo que necesitas saber antes de sumarte a <strong>Despega con AQN</strong>, el programa premium de mentoría en vivo con la Dra. Aracely Quispe Neira.</p>
+  <div class="lang-switch">🌐 Are you in the US/Global? <a href="/faq?region=us">Read in English</a></div>
+</header>
+
+<main>
+
+  <nav class="toc" aria-label="Índice de preguntas">
+    <h2>Índice</h2>
+    <ol>
+      <li><a href="#curso">Sobre el programa</a></li>
+      <li><a href="#aracely">Sobre la Dra. Quispe</a></li>
+      <li><a href="#precios">Precios y pagos</a></li>
+      <li><a href="#visas">Visas e inmigración</a></li>
+      <li><a href="#admisiones">Admisiones universitarias</a></li>
+      <li><a href="#carrera">Carrera y empleo STEM</a></li>
+      <li><a href="#tecnologia">Tecnología y acceso</a></li>
+      <li><a href="#soporte">Soporte y comunidad</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. SOBRE EL PROGRAMA -->
+  <section class="faq-section" id="curso">
+    <h2>1. Sobre el programa</h2>
+
+    <details open>
+      <summary>¿Qué es exactamente "Despega con AQN"?</summary>
+      <div class="answer">
+        <p>Es un programa <strong>premium de mentoría en vivo en grupo</strong> con la Dra. Aracely Quispe Neira (16+ años en NASA, Ingeniera Líder de Sistemas de Vuelo del Telescopio Espacial James Webb).</p>
+        <p>No es un curso auto-guiado pre-grabado. Son <strong>cohortes en vivo</strong> con sesiones semanales, Q&A directo con la Dra. Quispe, y una hoja de ruta STEM personalizada organizada en 5 módulos.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cuánto dura el programa?</summary>
+      <div class="answer">
+        <p>Cada cohorte dura aproximadamente <strong>8 semanas</strong>, con 1 sesión en vivo por semana (90 minutos) más Q&A y tareas prácticas. Las grabaciones quedan disponibles durante toda la cohorte.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Qué modalidades tiene el programa?</summary>
+      <div class="answer">
+        <p>Ofrecemos <strong>3 niveles</strong> en cada región:</p>
+        <ul>
+          <li><strong>Fundadores / Founding</strong> — cohorte inaugural, precio de lanzamiento, acceso completo a las sesiones en vivo.</li>
+          <li><strong>Estándar / Standard</strong> — acceso completo a las sesiones en vivo más recursos extendidos.</li>
+          <li><strong>VIP</strong> — grupo reducido, acceso directo adicional con la Dra. Quispe, Q&A prioritario, soporte personalizado. <em>Cupos limitados a 10 por cohorte.</em></li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Para quién está diseñado?</summary>
+      <div class="answer">
+        <p>Para estudiantes latinoamericanos e hispanohablantes (y sus familias) con enfoque STEM que quieren:</p>
+        <ul>
+          <li>Ingresar a universidades de primer nivel en Estados Unidos.</li>
+          <li>Acelerar una carrera en ingeniería, ciencias o tecnología.</li>
+          <li>Entender visas, inmigración y caminos profesionales reales post-graduación.</li>
+          <li>Tener mentoría directa de alguien que ya recorrió ese camino.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cuáles son los 5 módulos?</summary>
+      <div class="answer">
+        <ol style="margin-left:22px;">
+          <li><strong>El Efecto Aracely</strong> — mentalidad, propósito y visión STEM.</li>
+          <li><strong>Combustible Inglés</strong> — inglés técnico aplicado a ingeniería y ciencias.</li>
+          <li><strong>Código Abierto</strong> — fundamentos de programación para carreras STEM.</li>
+          <li><strong>Laboratorio de Investigación</strong> — método científico, papers, aplicaciones reales.</li>
+          <li><strong>Admisiones + Visas + Carrera</strong> — hoja de ruta universitaria, F-1/OPT/H-1B, empleabilidad.</li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+  <!-- 2. SOBRE ARACELY -->
+  <section class="faq-section" id="aracely">
+    <h2>2. Sobre la Dra. Aracely Quispe Neira</h2>
+
+    <details>
+      <summary>¿Quién es la Dra. Quispe?</summary>
+      <div class="answer">
+        <p>Es una ingeniera aeroespacial peruana, nacida en Lambayeque, que con <strong>16+ años en NASA</strong> participó en las misiones <strong>TRMM, LRO y JWST (Telescopio Espacial James Webb)</strong>.</p>
+        <p>Fue <strong>Ingeniera Senior de Operaciones de Sistemas de Vuelo</strong> y <strong>Líder de Ingeniería</strong> del lanzamiento de 2021 del JWST. Es reconocida por Estados Unidos bajo la clasificación "Extraordinary Ability / Top 1% Global Talent" y es Profesora Adjunta en Capitol Technology University.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Es ella quien dicta las sesiones?</summary>
+      <div class="answer">
+        <p><strong>Sí.</strong> La Dra. Quispe dicta personalmente todas las sesiones principales en vivo. Ese es el núcleo del programa. No es un curso con instructores delegados.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo verificar su trayectoria?</summary>
+      <div class="answer">
+        <p>Sí. Puedes buscar su perfil público en NASA, revisar su participación en el lanzamiento del JWST, y encontrar entrevistas y ponencias en medios internacionales. Tiene presencia verificada en LinkedIn y canales oficiales.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 3. PRECIOS -->
+  <section class="faq-section" id="precios">
+    <h2>3. Precios y pagos</h2>
+
+    <details open>
+      <summary>¿Cuánto cuesta?</summary>
+      <div class="answer">
+        <p>El precio depende de tu región y del nivel que elijas:</p>
+        <div class="pricing-grid">
+          <div class="region">
+            <strong>LatAm (en español)</strong>
+            Fundadores — $797 USD<br>
+            Estándar — $997 USD<br>
+            VIP — $2,200 USD
+          </div>
+          <div class="region">
+            <strong>US / Global (en inglés)</strong>
+            Founding — $997 USD<br>
+            Standard — $1,497 USD<br>
+            VIP — $2,500 USD
+          </div>
+        </div>
+        <p>Los precios están en dólares estadounidenses (USD). Si estás en LatAm, tu banco realizará la conversión a la moneda local al cobrar.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Qué métodos de pago aceptan?</summary>
+      <div class="answer">
+        <p><strong>LatAm:</strong> tarjeta de crédito/débito (Visa, Mastercard, Amex), PayPal y Mercado Pago.</p>
+        <p><strong>US/Global:</strong> tarjeta de crédito/débito y PayPal.</p>
+        <p>Pago seguro procesado por Stripe y PayPal. Nunca almacenamos tus datos de tarjeta.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Existe pago en cuotas?</summary>
+      <div class="answer">
+        <p>Sí, en algunos niveles ofrecemos hasta 3 cuotas sin interés adicional (dependiendo de tu región y del procesador de pagos). El desglose se muestra en la página de checkout antes de confirmar.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo pedir reembolso?</summary>
+      <div class="answer">
+        <p>Sí. Tienes <strong>garantía de satisfacción de 14 días</strong>: si asistes a la primera sesión en vivo y decides que el programa no es para ti, te devolvemos el 100% del monto pagado. Sin preguntas incómodas. Escríbenos a <strong>contacto@despegaconaqn.com</strong> dentro de esos 14 días y procesamos el reembolso.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cuándo empieza la próxima cohorte?</summary>
+      <div class="answer">
+        <p>Abrimos cohortes trimestralmente. La fecha exacta de la próxima cohorte aparece en la <a href="/pricing">página de precios</a>. Al inscribirte recibes por correo el calendario completo de las 8 sesiones.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 4. VISAS -->
+  <section class="faq-section" id="visas">
+    <h2>4. Visas e inmigración</h2>
+
+    <details>
+      <summary>¿Qué visas se cubren en el programa?</summary>
+      <div class="answer">
+        <p>El módulo de visas cubre las rutas más relevantes para estudiantes y profesionales STEM:</p>
+        <ul>
+          <li><strong>F-1</strong> — visa de estudiante para estudios de pregrado y posgrado.</li>
+          <li><strong>OPT y STEM-OPT</strong> — permisos de trabajo post-graduación (12 meses + extensión de 24 meses para carreras STEM).</li>
+          <li><strong>H-1B</strong> — visa de trabajo profesional.</li>
+          <li><strong>O-1</strong> — visa de talento extraordinario.</li>
+          <li><strong>EB-2 NIW</strong> — residencia permanente por interés nacional.</li>
+          <li><strong>E-2</strong> — visa de inversionista (para familias).</li>
+        </ul>
+        <p><strong>Importante:</strong> el programa te explica rutas y requisitos, pero <em>no reemplaza asesoría legal migratoria</em>. Siempre recomendamos consultar un abogado de inmigración para tu caso específico.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cuánto tiempo toma cada proceso de visa?</summary>
+      <div class="answer">
+        <p>Los tiempos varían y dependen del consulado, tu nacionalidad, tu institución patrocinadora y las políticas migratorias vigentes al momento de aplicar. En el programa revisamos los plazos típicos y cómo planificar con margen.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿La Dra. Quispe me va a ayudar con mi caso migratorio personal?</summary>
+      <div class="answer">
+        <p>El programa te da el <strong>mapa estratégico</strong> (qué visa corresponde a qué etapa, qué documentos preparar con anticipación, cómo fortalecer tu perfil). No constituye representación legal ni sustituye a un abogado migratorio.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 5. ADMISIONES -->
+  <section class="faq-section" id="admisiones">
+    <h2>5. Admisiones universitarias</h2>
+
+    <details>
+      <summary>¿Para qué tipo de universidades prepara este programa?</summary>
+      <div class="answer">
+        <p>El programa te prepara para aplicar a universidades Tier-1 y Tier-2 en Estados Unidos (desde MIT, Stanford, CMU, Georgia Tech hasta las principales universidades estatales con programas STEM fuertes). También aplicamos los mismos principios a universidades canadienses y europeas.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Necesito tener SAT o TOEFL para empezar?</summary>
+      <div class="answer">
+        <p>No para empezar el programa. Dentro del módulo de admisiones te mostramos cómo construir un plan de preparación para SAT, TOEFL/IELTS, AP exams y otros requisitos estándar, adaptado a tu nivel actual.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cómo ayuda el programa con los ensayos (essays)?</summary>
+      <div class="answer">
+        <p>Revisamos estructuras de ensayos efectivos, qué buscan los admission officers en carreras STEM, y cómo transformar tu historia personal en un ensayo que conecte con la misión de la universidad. No escribimos los ensayos por ti, pero te damos el marco y feedback sobre tu borrador.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Qué pasa si no me admiten en la universidad objetivo?</summary>
+      <div class="answer">
+        <p>Trabajamos el plan con <strong>estrategia de portafolio</strong>: universidades reach, match y safety. La probabilidad de admisión es el resultado del perfil construido a lo largo de meses o años, no del último formulario. Por eso la hoja de ruta es el entregable clave.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 6. CARRERA -->
+  <section class="faq-section" id="carrera">
+    <h2>6. Carrera y empleo STEM</h2>
+
+    <details>
+      <summary>¿El programa garantiza un empleo en NASA o una empresa espacial?</summary>
+      <div class="answer">
+        <p>No, y desconfía de cualquier programa que te garantice eso. Lo que sí te damos son las <strong>herramientas, contactos y hoja de ruta realistas</strong> para aumentar de forma material tus probabilidades de entrar a carreras STEM de alto impacto (NASA, aeroespacial, semiconductores, energía, IA aplicada, biotech).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Cómo ayuda con el resume y LinkedIn?</summary>
+      <div class="answer">
+        <p>En el módulo de carrera trabajamos: formato de resume tipo estadounidense, cómo describir proyectos STEM con métricas, optimización de LinkedIn para recruiters de ingeniería, y preparación para entrevistas técnicas y de comportamiento (behavioral).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Hay ayuda para encontrar prácticas (internships)?</summary>
+      <div class="answer">
+        <p>Compartimos fuentes de búsqueda, estrategia de aplicación temprana, y cómo aprovechar OPT para prácticas de verano. No postulamos por ti, pero te acompañamos estratégicamente.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 7. TECNOLOGIA -->
+  <section class="faq-section" id="tecnologia">
+    <h2>7. Tecnología y acceso</h2>
+
+    <details>
+      <summary>¿En qué plataforma se dictan las sesiones?</summary>
+      <div class="answer">
+        <p>Las sesiones en vivo se dictan vía <strong>Zoom</strong>. Los materiales, grabaciones y recursos adicionales están dentro del portal del estudiante de AQN Academy.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Qué necesito tener para participar?</summary>
+      <div class="answer">
+        <ul>
+          <li>Conexión a internet estable.</li>
+          <li>Computadora, tablet o smartphone (computadora recomendada para el módulo de código).</li>
+          <li>Cuenta de correo activa para recibir enlaces y recursos.</li>
+          <li>Ganas de trabajar: dedica al menos 4–6 horas por semana fuera de las sesiones en vivo.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo ver las grabaciones si no asisto en vivo?</summary>
+      <div class="answer">
+        <p>Sí. Todas las sesiones se graban y quedan disponibles en el portal durante toda la cohorte. Sin embargo, te recomendamos asistir en vivo al menos a las Q&A con la Dra. Quispe — ahí está el mayor valor.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- 8. SOPORTE -->
+  <section class="faq-section" id="soporte">
+    <h2>8. Soporte y comunidad</h2>
+
+    <details>
+      <summary>¿Cómo me contacto con el equipo?</summary>
+      <div class="answer">
+        <p>Correo: <strong>contacto@despegaconaqn.com</strong>. Respondemos de lunes a viernes dentro de 24 horas hábiles.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Hay una comunidad privada?</summary>
+      <div class="answer">
+        <p>Sí. Al inscribirte recibes acceso a la comunidad privada de AQN (Discord/Circle) donde interactúas con otros estudiantes de la cohorte, comparten proyectos y reciben anuncios oficiales.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo pedir una sesión 1-a-1 con la Dra. Quispe?</summary>
+      <div class="answer">
+        <p>Sí, las sesiones 1-a-1 con la Dra. Quispe están disponibles como <strong>add-on estratégico del nivel VIP</strong>. Los cupos son muy limitados.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Qué pasa si una sesión se cancela?</summary>
+      <div class="answer">
+        <p>Si por fuerza mayor una sesión se reprograma, lo comunicamos por correo con al menos 24 horas de anticipación. Toda sesión reprogramada se dicta dentro de la misma cohorte sin costo adicional.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo regalar el programa a un familiar o estudiante?</summary>
+      <div class="answer">
+        <p>Sí. Durante el checkout puedes indicar que el pago es un regalo e ingresar los datos del estudiante final. Escríbenos a <strong>contacto@despegaconaqn.com</strong> si necesitas una factura o proceso especial.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-bar">
+    <h3>¿Listo para aplicar?</h3>
+    <p>Revisa los niveles y fechas de la próxima cohorte.</p>
+    <a class="cta-button" href="/pricing">Ver precios y aplicar →</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>Despega con AQN · Launch with AQN · Spacetech Inspira / AQN Academy</p>
+  <p style="margin-top:8px;">
+    <a href="/">Inicio</a> ·
+    <a href="/pricing">Precios</a> ·
+    <a href="/privacidad">Privacidad</a> ·
+    <a href="/terminos">Términos</a> ·
+    <a href="mailto:contacto@despegaconaqn.com">contacto@despegaconaqn.com</a>
+  </p>
+</footer>
+
+</body>
+</html>

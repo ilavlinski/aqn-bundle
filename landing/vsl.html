@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Despega con AQN · De Lambayeque a la NASA · Mentoría Premium con la Dra. Aracely Quispe Neira</title>
+<meta name="description" content="De un pueblo en Lambayeque a liderar ingeniería del Telescopio Espacial James Webb en NASA. La Dra. Aracely Quispe Neira abre cohortes premium en vivo para estudiantes STEM hispanohablantes. Próxima cohorte abierta.">
+<meta property="og:title" content="Despega con AQN · De Lambayeque a la NASA">
+<meta property="og:description" content="Mentoría premium en vivo con la Dra. Aracely Quispe Neira (16+ años NASA, Líder JWST).">
+<meta property="og:type" content="video.other">
+<meta property="og:image" content="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m1l1.jpg">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1D3A;
+    --blue: #1565C0;
+    --gold: #fbbf24;
+    --gold-dark: #c08a2e;
+    --cream: #fffbeb;
+    --ink: #1a1f2e;
+    --muted: #94a3b8;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.65;
+    color: #e5e7eb;
+    background: #050a18;
+    overflow-x: hidden;
+  }
+  a { color: var(--gold); }
+
+  /* Starry background */
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 60% 70%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 40% 80%, #fff, transparent),
+      radial-gradient(1px 1px at 80% 20%, #fff, transparent),
+      radial-gradient(1px 1px at 10% 60%, #fff, transparent),
+      radial-gradient(2px 2px at 75% 50%, #fff, transparent),
+      radial-gradient(1px 1px at 95% 85%, #fff, transparent),
+      linear-gradient(180deg, #050a18 0%, #0B1D3A 60%, #050a18 100%);
+    background-size: 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 100% 100%;
+    opacity: 0.6;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* HERO */
+  header.hero {
+    padding: 80px 20px 60px;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    background: rgba(251,191,36,0.15);
+    color: var(--gold);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border: 1px solid rgba(251,191,36,0.35);
+  }
+  header.hero h1 {
+    font-size: clamp(1.9em, 5vw, 3.1em);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+  header.hero h1 span.accent { color: var(--gold); }
+  header.hero p.sub {
+    font-size: clamp(1em, 2vw, 1.15em);
+    color: #cbd5e1;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+
+  /* Video placeholder */
+  .video-wrap {
+    max-width: 860px;
+    margin: 0 auto 36px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .video-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+  }
+  .video-wrap .play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  .video-wrap .play .circle {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: rgba(251,191,36,0.95);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 10px rgba(251,191,36,0.18), 0 0 0 24px rgba(251,191,36,0.08);
+    transition: transform 0.2s;
+  }
+  .video-wrap .play:hover .circle { transform: scale(1.06); }
+  .video-wrap .play .circle::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 26px solid var(--navy);
+    margin-left: 6px;
+  }
+  .video-wrap .label {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    background: rgba(0,0,0,0.65);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fbbf24;
+  }
+
+  /* Primary CTA */
+  .cta-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 1.1em;
+    padding: 16px 42px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(251,191,36,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(251,191,36,0.5);
+  }
+  .cta-secondary {
+    color: #cbd5e1;
+    margin-top: 14px;
+    font-size: 14px;
+    display: block;
+  }
+
+  /* Authority strip */
+  .authority {
+    background: rgba(255,255,255,0.03);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 30px 20px;
+    text-align: center;
+    margin: 60px 0 80px;
+  }
+  .authority .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .authority .stat strong {
+    display: block;
+    font-size: 1.8em;
+    color: var(--gold);
+    font-weight: 800;
+  }
+  .authority .stat span {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #cbd5e1;
+  }
+
+  /* Section */
+  section.block {
+    padding: 60px 20px;
+  }
+  section.block h2 {
+    color: #fff;
+    font-size: clamp(1.6em, 3vw, 2.1em);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  section.block p { color: #cbd5e1; margin-bottom: 14px; }
+  section.block .lede {
+    font-size: 1.1em;
+    color: #e5e7eb;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+
+  /* Pain points */
+  .pain-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+  }
+  .pain-list li {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 4px solid #ef4444;
+    padding: 18px 22px;
+    border-radius: 8px;
+    color: #e5e7eb;
+  }
+
+  /* Story block */
+  .story {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 40px;
+    margin-top: 40px;
+  }
+  .story p.quote {
+    font-size: 1.15em;
+    color: #fff;
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 18px;
+    margin: 18px 0;
+  }
+  .story .aracely-tag {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .story .aracely-tag .avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    color: var(--navy);
+    font-size: 1.1em;
+  }
+  .story .aracely-tag .meta strong { color: #fff; display: block; }
+  .story .aracely-tag .meta span { color: var(--muted); font-size: 13px; }
+
+  /* What you get */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .module-card {
+    background: linear-gradient(180deg, rgba(21,101,192,0.14), rgba(11,29,58,0.6));
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .module-card .num {
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .module-card h3 {
+    color: #fff;
+    margin: 8px 0;
+    font-size: 1.1em;
+  }
+  .module-card p { color: #cbd5e1; font-size: 14px; margin: 0; }
+
+  /* Tiers preview */
+  .tier-preview {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 14px;
+    padding: 30px;
+    margin-top: 30px;
+  }
+  .tier-preview h3 { color: var(--gold); margin-bottom: 12px; }
+  .tier-preview .rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .tier-preview .row {
+    background: rgba(0,0,0,0.25);
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .tier-preview .row strong { color: #fff; display: block; }
+  .tier-preview .row span { color: var(--gold); font-weight: 700; }
+  .tier-preview .row em { color: var(--muted); font-size: 12px; font-style: normal; display: block; margin-top: 4px; }
+
+  /* Guarantee */
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.25);
+    padding: 24px;
+    border-radius: 12px;
+    margin-top: 40px;
+  }
+  .guarantee .seal {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #10b981;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1;
+    font-size: 13px;
+  }
+  .guarantee .seal strong { font-size: 22px; display: block; }
+  .guarantee p { color: #e5e7eb; margin: 0; }
+
+  /* Final CTA */
+  .final-cta {
+    text-align: center;
+    padding: 80px 20px 100px;
+  }
+  .final-cta h2 {
+    color: #fff;
+    font-size: clamp(1.8em, 3vw, 2.4em);
+    margin-bottom: 12px;
+  }
+  .final-cta p {
+    color: #cbd5e1;
+    max-width: 620px;
+    margin: 0 auto 28px;
+  }
+
+  footer {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  footer a { color: var(--gold); text-decoration: none; margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<!-- HERO -->
+<header class="hero container">
+  <span class="eyebrow">Próxima cohorte · Cupos limitados</span>
+  <h1>De un pueblo en Lambayeque<br>a <span class="accent">liderar ingeniería del JWST</span> en NASA.</h1>
+  <p class="sub">Ahora la Dra. Aracely Quispe Neira abre cohortes premium en vivo para estudiantes STEM hispanohablantes. Si tu sueño es ingeniería, ciencias o la industria espacial — este es el mapa que a ella le habría encantado tener.</p>
+
+  <div class="video-wrap" role="button" aria-label="Reproducir mensaje de la Dra. Aracely Quispe Neira">
+    <img src="https://raw.githubusercontent.com/ilavlinski/aqn-bundle/main/lesson-images/m1l1.jpg" alt="Dra. Aracely Quispe Neira — Telescopio Espacial James Webb">
+    <div class="play">
+      <div class="circle"></div>
+    </div>
+    <div class="label">▶ Mensaje de la Dra. Quispe · 4 min</div>
+  </div>
+
+  <a href="/pricing" class="cta-primary">Ver niveles y aplicar →</a>
+  <a href="#modulos" class="cta-secondary">o ver qué incluye el programa ↓</a>
+</header>
+
+<!-- AUTHORITY -->
+<div class="authority">
+  <div class="row">
+    <div class="stat"><strong>16+</strong><span>años en NASA</span></div>
+    <div class="stat"><strong>JWST</strong><span>Lead Engineer · Lanzamiento 2021</span></div>
+    <div class="stat"><strong>Top 1%</strong><span>Global Talent · EE.UU.</span></div>
+    <div class="stat"><strong>1,247+</strong><span>estudiantes mentoreados</span></div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="block container">
+  <h2>Si algo de esto te suena conocido, este programa es para ti:</h2>
+  <ul class="pain-list">
+    <li>Tienes ganas de entrar a una universidad top en Estados Unidos, pero no sabes por dónde empezar ni a quién preguntarle.</li>
+    <li>Escuchas "SAT", "TOEFL", "OPT", "H-1B" y te da vértigo porque nadie en tu familia ha recorrido ese camino.</li>
+    <li>Ves a otros aplicar a NASA, SpaceX, MIT, y piensas: "eso es para gente que nació en otro contexto".</li>
+    <li>Estás pagando asesorías genéricas que no entienden lo que es ser latinoamericano y estudiante STEM al mismo tiempo.</li>
+    <li>Tienes talento y esfuerzo — lo que te falta es un mapa real y alguien que ya llegó al otro lado.</li>
+  </ul>
+</section>
+
+<!-- STORY -->
+<section class="block container">
+  <h2>La historia detrás del programa</h2>
+  <p class="lede">Aracely no nació en Harvard ni en Houston. Nació en Lambayeque, un pueblo al norte del Perú. Creció mirando el cielo y preguntándose si alguien como ella podría algún día trabajar en la NASA.</p>
+  <div class="story">
+    <p class="quote">"Cuando entré a NASA, lo hice sabiendo que no iba sola. Cada decisión técnica que tomaba era también para la niña del pueblo que me veía y pensaba: si ella pudo, yo también."</p>
+    <p>Hoy, después de 16+ años en NASA, del liderazgo de ingeniería del lanzamiento del Telescopio Espacial James Webb en 2021, y con reconocimiento formal de Estados Unidos como "Extraordinary Ability / Top 1% Global Talent", Aracely abre por primera vez cohortes premium para enseñar lo que a ella le habría servido saber antes.</p>
+    <div class="aracely-tag">
+      <div class="avatar">AQ</div>
+      <div class="meta">
+        <strong>Dra. Aracely Quispe Neira</strong>
+        <span>NASA · JWST Senior Flight Systems Operations Engineer · Adjunct Professor, Capitol Technology University</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="block container" id="modulos">
+  <h2>Lo que vas a construir en 5 módulos</h2>
+  <p class="lede">No es un curso pre-grabado. Son sesiones en vivo semanales con la Dra. Quispe, Q&A directo y una hoja de ruta construida contigo.</p>
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="num">Módulo 1</div>
+      <h3>El Efecto Aracely</h3>
+      <p>Mentalidad, propósito y visión STEM desde el primer día.</p>
+    </div>
+    <div class="module-card">
+      <div class="num">Módulo 2</div>
+      <h3>Combustible Inglés</h3>
+      <p>Inglés técnico aplicado a ingeniería, ciencia y entrevistas.</p>
+    </div>
+    <div class="module-card">
+      <div class="num">Módulo 3</div>
+      <h3>Código Abierto</h3>
+      <p>Fundamentos de programación para carreras STEM.</p>
+    </div>
+    <div class="module-card">
+      <div class="num">Módulo 4</div>
+      <h3>Laboratorio de Investigación</h3>
+      <p>Método científico, papers, proyectos con impacto real.</p>
+    </div>
+    <div class="module-card">
+      <div class="num">Módulo 5</div>
+      <h3>Admisiones, Visas y Carrera</h3>
+      <p>Universidades top, F-1/OPT/H-1B/O-1, resume y empleo STEM.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIER PREVIEW -->
+<section class="block container">
+  <h2>Tres niveles. Dos regiones. Una sola cohorte en vivo con la Dra. Quispe.</h2>
+  <div class="tier-preview">
+    <h3>LatAm (en español)</h3>
+    <div class="rows">
+      <div class="row"><strong>Fundadores</strong><span>$797 USD</span><em>Cohorte inaugural · precio de lanzamiento</em></div>
+      <div class="row"><strong>Estándar</strong><span>$997 USD</span><em>Acceso completo + recursos extendidos</em></div>
+      <div class="row"><strong>VIP</strong><span>$2,200 USD</span><em>Grupo reducido · acceso directo con Aracely</em></div>
+    </div>
+  </div>
+  <div class="tier-preview" style="margin-top:14px;">
+    <h3>US / Global (in English)</h3>
+    <div class="rows">
+      <div class="row"><strong>Founding</strong><span>$997 USD</span><em>Founding cohort · limited seats</em></div>
+      <div class="row"><strong>Standard</strong><span>$1,497 USD</span><em>Full access + extended resources</em></div>
+      <div class="row"><strong>VIP</strong><span>$2,500 USD</span><em>Smaller group · direct access with Dr. Quispe</em></div>
+    </div>
+  </div>
+
+  <div class="guarantee">
+    <div class="seal"><strong>14</strong>días</div>
+    <p><strong style="color:#10b981;">Garantía total:</strong> asiste a la primera sesión en vivo. Si no te sirve, te devolvemos el 100%. Sin preguntas incómodas.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta container">
+  <h2>La próxima cohorte empieza pronto.</h2>
+  <p>La Dra. Quispe no dicta cohortes todo el año. Si te identificas con esta historia, aplica ahora antes de que se cierren los cupos.</p>
+  <a href="/pricing" class="cta-primary">Aplicar a la cohorte →</a>
+  <p style="margin-top:16px;font-size:13px;color:var(--muted);">¿Preguntas? Revisa las <a href="/faq">preguntas frecuentes</a> o escríbenos a <a href="mailto:contacto@despegaconaqn.com">contacto@despegaconaqn.com</a>.</p>
+</div>
+
+<footer>
+  <p>Despega con AQN · Launch with AQN · Spacetech Inspira / AQN Academy</p>
+  <p style="margin-top:8px;">
+    <a href="/">Inicio</a> ·
+    <a href="/pricing">Precios</a> ·
+    <a href="/faq">FAQ</a> ·
+    <a href="/privacidad">Privacidad</a> ·
+    <a href="/terminos">Términos</a>
+  </p>
+</footer>
+
+</body>
+</html>
